@@ -1,0 +1,9 @@
+; HyeokStreamMaster.def
+; Module definition file for VST2 plugin symbol exports
+; This ensures OBS and other VST hosts can find the entry point
+
+LIBRARY HyeokStreamMaster
+
+EXPORTS
+    VSTPluginMain
+    main=VSTPluginMain

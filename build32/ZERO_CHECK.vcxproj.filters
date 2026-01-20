@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\build32\CMakeFiles\a15caf767d0ef41af6877e400cc03586\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2335761F-DAE2-3245-BD47-10F1A87EC52D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

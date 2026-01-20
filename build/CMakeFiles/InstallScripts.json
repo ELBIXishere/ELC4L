@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Projects/ELBIXPLUGIN/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
