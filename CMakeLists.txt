@@ -69,7 +69,7 @@ if(WIN32)
     
     # Module definition file for symbol exports
     set_target_properties(ELC4L PROPERTIES
-        LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_SOURCE_DIR}/HyeokStreamMaster.def\""
+        LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_SOURCE_DIR}/ELC4L.def\""
     )
     
     # Output settings

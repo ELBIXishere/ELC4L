@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\processor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\waveformview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\3rdparty\nanovg\src\nanovg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\waveformview_direct3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\shared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\waveformview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\3rdparty\nanovg\src\nanovg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\3rdparty\D3D11NanoVG\D3D11PixelShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\3rdparty\D3D11NanoVG\D3D11PixelShaderAA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\3rdparty\D3D11NanoVG\D3D11VertexShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\source\3rdparty\D3D11NanoVG\nanovg_d3d11.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\resource\editor.uidesc">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\dataexchange\resource\info.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{28796889-75DE-3D73-9BAE-F891722563D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Resources">
+      <UniqueIdentifier>{C7A84163-08E7-3618-869D-6515D8924B60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9EB8F7D2-2B53-3389-BAC4-D46540E747C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8F1D573F-AA72-36C5-818C-14BA282F881E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

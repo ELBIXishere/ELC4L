@@ -1,0 +1,17 @@
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\pluginview.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\pluginview.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\main\pluginfactory.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\pluginfactory.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\main\moduleinit.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\moduleinit.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\utility\dataexchange.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\dataexchange.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\utility\stringconvert.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\stringconvert.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\utility\systemtime.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\systemtime.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\utility\testing.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\testing.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\utility\vst2persistence.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vst2persistence.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstaudioeffect.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstaudioeffect.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstbus.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstbus.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstcomponent.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstcomponent.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstcomponentbase.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstcomponentbase.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vsteditcontroller.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vsteditcontroller.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstinitiids.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstinitiids.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstnoteexpressiontypes.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstnoteexpressiontypes.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstparameters.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstparameters.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstrepresentation.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.dir\Release\vstrepresentation.obj

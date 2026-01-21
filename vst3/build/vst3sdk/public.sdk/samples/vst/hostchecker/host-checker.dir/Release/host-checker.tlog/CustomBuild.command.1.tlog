@@ -1,0 +1,46 @@
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\HOSTCHECKER\RESOURCE\HOSTCHECKER.UIDESC
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/hostchecker/resource/hostchecker.uidesc C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/host-checker.vst3/Contents/Resources/hostchecker.uidesc
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/hostchecker/resource/hostchecker.uidesc to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/host-checker.vst3/Contents/Resources/hostchecker.uidesc"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\HOSTCHECKER\RESOURCE\BYPASS.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/hostchecker/resource/bypass.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/host-checker.vst3/Contents/Resources/bypass.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/hostchecker/resource/bypass.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/host-checker.vst3/Contents/Resources/bypass.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\HOSTCHECKER\RESOURCE\KNOB.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/hostchecker/resource/knob.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/host-checker.vst3/Contents/Resources/knob.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/hostchecker/resource/knob.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/host-checker.vst3/Contents/Resources/knob.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\HOSTCHECKER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/vst3sdk/public.sdk/samples/vst/hostchecker/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

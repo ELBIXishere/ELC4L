@@ -43,7 +43,7 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 cd ..
-echo [SUCCESS] 64-bit build complete: build_x64\bin\Release\HyeokStreamMaster.dll
+echo [SUCCESS] 64-bit build complete: build_x64\bin\Release\ELC4L.dll
 
 REM ============================================
 REM 32-bit Windows Build
@@ -73,7 +73,7 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 cd ..
-echo [SUCCESS] 32-bit build complete: build_x86\bin\Release\HyeokStreamMaster.dll
+echo [SUCCESS] 32-bit build complete: build_x86\bin\Release\ELC4L.dll
 
 REM ============================================
 REM Copy to output folder
@@ -84,8 +84,8 @@ echo Copying to output folder...
 echo ============================================
 
 if not exist "output" mkdir "output"
-copy /Y "build_x64\bin\Release\HyeokStreamMaster.dll" "output\ELBIX_x64.dll"
-copy /Y "build_x86\bin\Release\HyeokStreamMaster.dll" "output\ELBIX_x86.dll"
+copy /Y "build_x64\bin\Release\ELC4L.dll" "output\ELBIX_x64.dll"
+copy /Y "build_x86\bin\Release\ELC4L.dll" "output\ELBIX_x86.dll"
 
 echo.
 echo ============================================

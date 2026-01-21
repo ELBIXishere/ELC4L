@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\editorsizecontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\eventlistcheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\eventlogdatabrowsersource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\eventlogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\hostcheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\hostcheckercontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\hostcheckerprocessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\parameterchangescheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\processcontextcheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\processsetupcheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\cids.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\editorsizecontroller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\eventlistcheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\eventlogdatabrowsersource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\eventlogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\hostcheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\hostcheckercontroller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\hostcheckerprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\logevents.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\parameterchangescheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\processcontextcheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\processsetupcheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\source\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\resource\hostchecker.uidesc">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\resource\bypass.png">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\resource\knob.png">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\hostchecker\resource\info.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{28796889-75DE-3D73-9BAE-F891722563D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Resources">
+      <UniqueIdentifier>{C7A84163-08E7-3618-869D-6515D8924B60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9EB8F7D2-2B53-3389-BAC4-D46540E747C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8F1D573F-AA72-36C5-818C-14BA282F881E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

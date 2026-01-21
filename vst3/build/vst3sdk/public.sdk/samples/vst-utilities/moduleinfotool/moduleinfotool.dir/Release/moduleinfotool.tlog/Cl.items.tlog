@@ -1,0 +1,4 @@
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\source\main.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\moduleinfotool.dir\Release\main.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\moduleinfo\moduleinfocreator.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\moduleinfotool.dir\Release\moduleinfocreator.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\moduleinfo\moduleinfoparser.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\moduleinfotool.dir\Release\moduleinfoparser.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\hosting\module_win32.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\moduleinfotool.dir\Release\module_win32.obj

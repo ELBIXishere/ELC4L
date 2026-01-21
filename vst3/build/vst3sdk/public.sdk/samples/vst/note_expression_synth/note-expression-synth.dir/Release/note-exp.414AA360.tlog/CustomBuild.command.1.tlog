@@ -1,0 +1,130 @@
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\NOTE_EXPRESSION_SYNTH.UIDESC
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/note_expression_synth.uidesc C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/note_expression_synth.uidesc
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/note_expression_synth.uidesc to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/note_expression_synth.uidesc"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\ABOUT.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/about.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/about.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/about.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/about.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\BACKGROUND.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/background.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/background.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/background.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/background.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\GROUPFRAME.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/groupframe.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/groupframe.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/groupframe.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/groupframe.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\KNOB.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/knob.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/knob.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/knob.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/knob.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\KNOB2.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/knob2.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/knob2.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/knob2.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/knob2.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\KNOB BIG.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/knob big.png" "C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/knob big.png"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/knob big.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/knob big.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\VST3_LOGO_SMALL.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/vst3_logo_small.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/vst3_logo_small.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/vst3_logo_small.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/vst3_logo_small.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\41466D9BB0654576B641098F686371B3_SNAPSHOT.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/41466D9BB0654576B641098F686371B3_snapshot.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/Snapshots/41466D9BB0654576B641098F686371B3_snapshot.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/41466D9BB0654576B641098F686371B3_snapshot.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/Snapshots/41466D9BB0654576B641098F686371B3_snapshot.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\RESOURCE\41466D9BB0654576B641098F686371B3_SNAPSHOT_2.0X.PNG
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/41466D9BB0654576B641098F686371B3_snapshot_2.0x.png C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/Snapshots/41466D9BB0654576B641098F686371B3_snapshot_2.0x.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/note_expression_synth/resource/41466D9BB0654576B641098F686371B3_snapshot_2.0x.png to C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/note-expression-synth.vst3/Contents/Resources/Snapshots/41466D9BB0654576B641098F686371B3_snapshot_2.0x.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\PROJECTS\ELBIXPLUGIN\VST3SDK\PUBLIC.SDK\SAMPLES\VST\NOTE_EXPRESSION_SYNTH\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/vst3sdk/public.sdk/samples/vst/note_expression_synth/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

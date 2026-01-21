@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\hosting\plugprovider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\editorhost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\usediids.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\platform\win32\platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\platform\win32\window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\hosting\module_win32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\hosting\plugprovider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\editorhost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\platform\appinit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\platform\iapplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\platform\iplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\platform\iwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\source\platform\win32\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst-hosting\editorhost\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9EB8F7D2-2B53-3389-BAC4-D46540E747C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8F1D573F-AA72-36C5-818C-14BA282F881E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

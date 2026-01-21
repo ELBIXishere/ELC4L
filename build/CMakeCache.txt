@@ -200,6 +200,12 @@ ELC4L_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 ELC4L_SOURCE_DIR:STATIC=C:/Projects/ELBIXPLUGIN
 
+//No help, variable specified on the command line.
+SMTG_ADD_VSTGUI:UNINITIALIZED=ON
+
+//No help, variable specified on the command line.
+SMTG_CREATE_PLUGIN_LINK:UNINITIALIZED=0
+
 
 ########################
 # INTERNAL cache entries

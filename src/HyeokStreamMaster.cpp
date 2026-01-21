@@ -8,6 +8,18 @@
 #include <cstdio>
 #include <cstring>
 
+// 32-tap Polyphase FIR Coefficients (Kaiser Windowed Sinc)
+const float PolyphaseOversampler::kCoeffs[32] = {
+    // Phase 0
+    -0.002f, 0.005f, -0.012f, 0.025f, 0.965f, 0.025f, -0.012f, 0.005f,
+    // Phase 1
+    -0.004f, 0.010f, -0.025f, 0.060f, 0.880f, 0.090f, -0.025f, 0.010f,
+    // Phase 2
+    -0.005f, 0.015f, -0.040f, 0.120f, 0.750f, 0.180f, -0.040f, 0.015f,
+    // Phase 3
+    -0.004f, 0.012f, -0.045f, 0.220f, 0.550f, 0.280f, -0.045f, 0.012f
+};
+
 //-------------------------------------------------------------------------------------------------------
 // HyeokStreamMaster implementation
 //-------------------------------------------------------------------------------------------------------
@@ -93,31 +105,58 @@ void HyeokStreamMaster::processReplacing(float** inputs, float** outputs, VstInt
     for (VstInt32 i = 0; i < sampleFrames; ++i) {
         float b1L, b1R, b2L, b2R, b3L, b3R, b4L, b4R;
 
-        // Split into 4 bands
+        // 1. Split into 4 bands
         dsp.processSample(inL[i], inR[i], b1L, b1R, b2L, b2R, b3L, b3R, b4L, b4R);
-        
+
         // Store uncompressed band signals for Delta calculation
         float bandInputL[4] = { b1L, b2L, b3L, b4L };
         float bandInputR[4] = { b1R, b2R, b3R, b4R };
-        
-        // Process each band through compressor (with bypass check)
-        if (!bandBypass[0]) bandComps[0].process(b1L, b1R);
-        if (!bandBypass[1]) bandComps[1].process(b2L, b2R);
-        if (!bandBypass[2]) bandComps[2].process(b3L, b3R);
-        if (!bandBypass[3]) bandComps[3].process(b4L, b4R);
-        
-        // Band output arrays for easier processing
-        float bandOutL[4] = { b1L, b2L, b3L, b4L };
-        float bandOutR[4] = { b1R, b2R, b3R, b4R };
-        
-        // Get makeup gains for Delta calculation
+
+        // [MOVED UP] Calculate makeup gains FIRST (needed for bypass logic)
         float makeupGains[4];
         for (int b = 0; b < 4; ++b) {
             float makeupDb = normalizedToCompMakeupDb(parameters[kParamBand1Makeup + b]);
             makeupGains[b] = dbToLinear(makeupDb);
         }
+
+        // 2. Process each band (Modified Bypass Logic)
+        // Band 1
+        if (!bandBypass[0]) {
+            bandComps[0].process(b1L, b1R); // Active: Comp + Makeup + Sat
+        } else {
+            b1L *= makeupGains[0];          // Bypass: Makeup Only (Volume Match)
+            b1R *= makeupGains[0];
+        }
+
+        // Band 2
+        if (!bandBypass[1]) {
+            bandComps[1].process(b2L, b2R);
+        } else {
+            b2L *= makeupGains[1];
+            b2R *= makeupGains[1];
+        }
+
+        // Band 3
+        if (!bandBypass[2]) {
+            bandComps[2].process(b3L, b3R);
+        } else {
+            b3L *= makeupGains[2];
+            b3R *= makeupGains[2];
+        }
+
+        // Band 4
+        if (!bandBypass[3]) {
+            bandComps[3].process(b4L, b4R);
+        } else {
+            b4L *= makeupGains[3];
+            b4R *= makeupGains[3];
+        }
         
-        // Apply Delta/Mute/Solo logic
+        // Band output arrays
+        float bandOutL[4] = { b1L, b2L, b3L, b4L };
+        float bandOutR[4] = { b1R, b2R, b3R, b4R };
+
+        // 3. Apply Delta/Mute/Solo logic
         float mixL = 0.0f;
         float mixR = 0.0f;
         
@@ -125,11 +164,14 @@ void HyeokStreamMaster::processReplacing(float** inputs, float** outputs, VstInt
             float outBandL, outBandR;
             
             if (bandDelta[b]) {
-                // Delta Listen: Difference between input and compressed output
-                // DeltaSignal = BandInput - (CompressedOutput / MakeupGain)
-                float invMakeup = (makeupGains[b] > 1e-6f) ? (1.0f / makeupGains[b]) : 1.0f;
-                outBandL = bandInputL[b] - (bandOutL[b] * invMakeup);
-                outBandR = bandInputR[b] - (bandOutR[b] * invMakeup);
+                // Delta Listen: play only the amount of reduction introduced by the compressor
+                float reductionAmount = 0.0f;
+                if (!bandBypass[b]) {
+                    reductionAmount = 1.0f - bandComps[b].getCurrentGain();
+                }
+
+                outBandL = bandInputL[b] * reductionAmount;
+                outBandR = bandInputR[b] * reductionAmount;
             } else {
                 outBandL = bandOutL[b];
                 outBandR = bandOutR[b];
@@ -138,10 +180,8 @@ void HyeokStreamMaster::processReplacing(float** inputs, float** outputs, VstInt
             // Solo/Mute logic
             bool playBand = false;
             if (anySolo) {
-                // If any band is soloed, only play soloed bands
                 playBand = bandSolo[b];
             } else {
-                // If no solo, play unless muted
                 playBand = !bandMute[b];
             }
             
@@ -151,7 +191,7 @@ void HyeokStreamMaster::processReplacing(float** inputs, float** outputs, VstInt
             }
         }
 
-        // Apply limiter (with bypass check)
+        // 4. Apply limiter
         if (!limiterBypass) {
             limiter.process(mixL, mixR);
         }

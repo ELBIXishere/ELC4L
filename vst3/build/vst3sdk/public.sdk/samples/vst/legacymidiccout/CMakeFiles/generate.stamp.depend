@@ -1,0 +1,3 @@
+# CMake generation dependency list for this directory.
+C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/templates/projectversion.h.in
+C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/legacymidiccout/CMakeLists.txt

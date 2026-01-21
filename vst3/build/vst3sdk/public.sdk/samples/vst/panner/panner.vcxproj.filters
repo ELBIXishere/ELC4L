@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\source\plugfactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\source\plugcontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\source\plugprocessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\include\plugcontroller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\include\plugids.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\include\plugprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\include\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\plug.uidesc">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\background.png">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\animation_knob.png">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\background_2x.png">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\background_3x.png">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\animation_knob_3x.png">
+      <Filter>Contents\Resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\A2EAF7DB320640F48EDE380DDF89562C_snapshot.png">
+      <Filter>Contents\Resources\Snapshots</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\A2EAF7DB320640F48EDE380DDF89562C_snapshot_2.0x.png">
+      <Filter>Contents\Resources\Snapshots</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\panner\resource\info.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{28796889-75DE-3D73-9BAE-F891722563D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Resources">
+      <UniqueIdentifier>{C7A84163-08E7-3618-869D-6515D8924B60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Resources\Snapshots">
+      <UniqueIdentifier>{FC2D1A39-44A9-37FA-B7F3-CBC89497207D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9EB8F7D2-2B53-3389-BAC4-D46540E747C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8F1D573F-AA72-36C5-818C-14BA282F881E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

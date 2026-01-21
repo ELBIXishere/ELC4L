@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/SMTG_AddVST3AuV3.cmake
+C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/SMTG_CodeSign.cmake
+C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/source/vst/auv3wrapper/CMakeLists.txt

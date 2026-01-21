@@ -1,0 +1,11 @@
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\baseiids.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\baseiids.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\fbuffer.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\fbuffer.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\fdebug.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\fdebug.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\fdynlib.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\fdynlib.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\fobject.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\fobject.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\fstreamer.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\fstreamer.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\fstring.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\fstring.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\timer.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\timer.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\source\updatehandler.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\updatehandler.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\thread\source\fcondition.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\fcondition.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\base\thread\source\flock.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.dir\Release\flock.obj

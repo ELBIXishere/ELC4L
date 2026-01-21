@@ -1,0 +1,44 @@
+{
+  "Name": "ELC4L",
+  "Version": "2.0.0.1",
+  "Factory Info": {
+    "Vendor": "Hyeok Audio",
+    "URL": "https://github.com/hyeokaudio",
+    "E-Mail": "mailto:hyeok@example.com",
+    "Flags": {
+      "Unicode": true,
+      "Classes Discardable": false,
+      "Component Non Discardable": false,
+    },
+  },
+  "Classes": [
+    {
+      "CID": "454C43344C5052504345535A30303031",
+      "Category": "Audio Module Class",
+      "Name": "ELC4L",
+      "Vendor": "Hyeok Audio",
+      "Version": "2.0.0.1",
+      "SDKVersion": "VST 3.8.0",
+      "Sub Categories": [
+        "Fx",
+        "Dynamics",
+      ],
+      "Class Flags": 1,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+    {
+      "CID": "454C43344C4354524C30303031303031",
+      "Category": "Component Controller Class",
+      "Name": "ELC4LController",
+      "Vendor": "Hyeok Audio",
+      "Version": "2.0.0.1",
+      "SDKVersion": "VST 3.8.0",
+      "Class Flags": 0,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+  ],
+}

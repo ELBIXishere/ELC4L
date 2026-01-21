@@ -1,0 +1,10 @@
+^C:\PROJECTS\ELBIXPLUGIN\VST3\BUILD\CMAKEFILES\1922F40D6C5E9EE101952FD31E309808\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Projects/ELBIXPLUGIN/vst3/build/ELC4L_VST3.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

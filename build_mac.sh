@@ -52,7 +52,7 @@ cd ..
 mkdir -p "$OUTPUT_DIR"
 
 # Copy VST bundle
-cp -R "$BUILD_DIR/bin/HyeokStreamMaster.vst" "$OUTPUT_DIR/ELBIX.vst"
+cp -R "$BUILD_DIR/bin/ELC4L.vst" "$OUTPUT_DIR/ELBIX.vst"
 
 echo ""
 echo "============================================"

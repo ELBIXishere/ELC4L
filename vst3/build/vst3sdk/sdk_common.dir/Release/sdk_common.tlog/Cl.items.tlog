@@ -1,0 +1,9 @@
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\commoniids.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\commoniids.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\commonstringconvert.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\commonstringconvert.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\openurl.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\openurl.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\systemclipboard_linux.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\systemclipboard_linux.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\systemclipboard_win32.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\systemclipboard_win32.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\threadchecker_linux.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\threadchecker_linux.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\threadchecker_win32.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\threadchecker_win32.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\common\readfile.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\readfile.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\vst\vstpresetfile.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.dir\Release\vstpresetfile.obj

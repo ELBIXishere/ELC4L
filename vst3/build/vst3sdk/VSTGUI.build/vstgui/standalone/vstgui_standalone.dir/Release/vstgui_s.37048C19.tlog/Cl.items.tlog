@@ -1,0 +1,12 @@
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\application.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\application.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\async.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\async.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\genericalertbox.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\genericalertbox.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\shareduiresources.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\shareduiresources.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\uidescriptionwindowcontroller.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\uidescriptionwindowcontroller.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\window.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\window.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\helpers\value.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\value.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\platform\win32\win32application.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\win32application.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\platform\win32\win32commondirectories.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\win32commondirectories.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\platform\win32\win32menu.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\win32menu.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\platform\win32\win32preference.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\win32preference.obj
+C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4\vstgui\standalone\source\platform\win32\win32window.cpp;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\standalone\vstgui_standalone.dir\Release\win32window.obj

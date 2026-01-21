@@ -1,0 +1,9 @@
+; ELC4L.def
+; Module definition file for VST2 plugin symbol exports
+; Ensures hosts can find the entry point and matches output name ELC4L
+
+LIBRARY ELC4L
+
+EXPORTS
+    VSTPluginMain
+    main=VSTPluginMain

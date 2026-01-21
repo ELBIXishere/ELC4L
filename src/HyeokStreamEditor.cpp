@@ -9,6 +9,16 @@
 #include <cmath>
 #include <algorithm>
 
+// Simple logging helper: OutputDebugString + append to file for easier capture
+static void EditorLog(const char* msg) {
+    OutputDebugStringA(msg);
+    FILE* f = fopen("output\\plugin_ui_log.txt", "a");
+    if (f) {
+        fprintf(f, "%s", msg);
+        fclose(f);
+    }
+}
+
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
@@ -269,16 +279,37 @@ bool HyeokStreamEditor::getRect(ERect** rect) {
 
 bool HyeokStreamEditor::open(void* ptr) {
     AEffEditor::open(ptr);
-    
+
+    char dbg[256];
+    sprintf(dbg, "HyeokStreamEditor::open ptr=%p\n", ptr);
+    EditorLog(dbg);
+
+    if (ptr == nullptr) {
+        EditorLog("HyeokStreamEditor::open - parent ptr is NULL\n");
+        return false;
+    }
+
     HWND parentHwnd = (HWND)ptr;
+    if (!IsWindow(parentHwnd)) {
+        EditorLog("HyeokStreamEditor::open - parent hwnd is not a valid window\n");
+        return false;
+    }
+
     HINSTANCE hInstance = (HINSTANCE)GetWindowLongPtr(parentHwnd, GWLP_HINSTANCE);
-    
+    if (hInstance == 0) {
+        DWORD err = GetLastError();
+        sprintf(dbg, "HyeokStreamEditor::open - GetWindowLongPtr returned 0, GetLastError=%lu\n", (unsigned long)err);
+        EditorLog(dbg);
+        hInstance = GetModuleHandle(NULL);
+    }
+
     if (!classRegistered) {
         if (!registerWindowClass(hInstance)) {
+            EditorLog("HyeokStreamEditor::open - registerWindowClass failed\n");
             return false;
         }
     }
-    
+
     bgBrush = CreateSolidBrush(ELC_BG_DARK);
     headerFont = CreateFontW(36, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
                             DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
@@ -307,8 +338,15 @@ bool HyeokStreamEditor::open(void* ptr) {
         hInstance,
         this
     );
-    
-    return hwnd != nullptr;
+    if (!hwnd) {
+        DWORD err = GetLastError();
+        char dbg2[256];
+        sprintf(dbg2, "HyeokStreamEditor::open - CreateWindowExW failed, err=%lu\n", (unsigned long)err);
+        EditorLog(dbg2);
+        return false;
+    }
+
+    return true;
 }
 
 void HyeokStreamEditor::close() {

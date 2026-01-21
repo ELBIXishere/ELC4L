@@ -1,0 +1,650 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{65C43EE3-858C-3370-A796-5A5450E4017A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ELC4L</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\VST3\Debug\ELC4L.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ELC4L.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ELC4L</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\VST3\Release\ELC4L.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ELC4L.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ELC4L</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\VST3\MinSizeRel\ELC4L.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ELC4L.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ELC4L</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\VST3\RelWithDebInfo\ELC4L.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ELC4L.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ELC4L</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4221</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;DEVELOPMENT=1;VSTGUI_LIVE_EDITING;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR="Debug";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;DEVELOPMENT=1;VSTGUI_LIVE_EDITING;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR=\"Debug\";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bin\Debug\moduleinfotool.exe -create -version 2.0.0.1 -path C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3 -output C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+bin\Debug\validator.exe C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/ELC4L.vst3 
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Debug\sdk.lib;lib\Debug\vstgui_support.lib;lib\Debug\sdk_common.lib;lib\Debug\pluginterfaces.lib;lib\Debug\base.lib;lib\Debug\vstgui.lib;lib\Debug\vstgui_uidescription.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Projects/ELBIXPLUGIN/vst3/build/Debug/ELC4L.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/vst3/build/WIN_PDB64/Debug/ELC4L.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4221</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RELEASE=1;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR="Release";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RELEASE=1;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR=\"Release\";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bin\Release\moduleinfotool.exe -create -version 2.0.0.1 -path C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3 -output C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+bin\Release\validator.exe  C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/ELC4L.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Release\sdk.lib;lib\Release\vstgui_support.lib;lib\Release\sdk_common.lib;lib\Release\pluginterfaces.lib;lib\Release\base.lib;lib\Release\vstgui.lib;lib\Release\vstgui_uidescription.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Projects/ELBIXPLUGIN/vst3/build/Release/ELC4L.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/vst3/build/WIN_PDB64/Release/ELC4L.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DisableSpecificWarnings>4221</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR="MinSizeRel";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR=\"MinSizeRel\";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bin\MinSizeRel\moduleinfotool.exe -create -version 2.0.0.1 -path C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3 -output C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+bin\MinSizeRel\validator.exe  
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\MinSizeRel\sdk.lib;lib\MinSizeRel\vstgui_support.lib;lib\MinSizeRel\sdk_common.lib;lib\MinSizeRel\pluginterfaces.lib;lib\MinSizeRel\base.lib;lib\MinSizeRel\vstgui.lib;lib\MinSizeRel\vstgui_uidescription.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Projects/ELBIXPLUGIN/vst3/build/MinSizeRel/ELC4L.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/vst3/build/WIN_PDB64/MinSizeRel/ELC4L.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4221</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RELEASE=1;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR="RelWithDebInfo";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RELEASE=1;VSTGUI_ENABLE_DEPRECATED_METHODS=1;SMTG_MODULE_IS_BUNDLE=1;CMAKE_INTDIR=\"RelWithDebInfo\";ELC4L_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3\src;C:\Projects\ELBIXPLUGIN\vst3\..\vst3sdk\vstgui4;C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3sdk\vstgui4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bin\RelWithDebInfo\moduleinfotool.exe -create -version 2.0.0.1 -path C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3 -output C:/Projects/ELBIXPLUGIN/vst3/build/VST3//ELC4L.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+bin\RelWithDebInfo\validator.exe  
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\RelWithDebInfo\sdk.lib;lib\RelWithDebInfo\vstgui_support.lib;lib\RelWithDebInfo\sdk_common.lib;lib\RelWithDebInfo\pluginterfaces.lib;lib\RelWithDebInfo\base.lib;lib\RelWithDebInfo\vstgui.lib;lib\RelWithDebInfo\vstgui_uidescription.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Projects/ELBIXPLUGIN/vst3/build/RelWithDebInfo/ELC4L.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/vst3/build/WIN_PDB64/RelWithDebInfo/ELC4L.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Projects/ELBIXPLUGIN/vst3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCXXCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeRCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Projects/ELBIXPLUGIN/vst3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCXXCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeRCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Projects/ELBIXPLUGIN/vst3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCXXCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeRCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Projects/ELBIXPLUGIN/vst3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeCXXCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeRCCompiler.cmake;C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\4.2.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Lfactory.cpp" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Lprocessor.cpp" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Lprocessor.h" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Lcontroller.cpp" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Lcontroller.h" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Leditor.cpp" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Leditor.h" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Lids.h" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3\src\ELC4Ldsp.h" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3\src\version.h" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\main\dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\ZERO_CHECK.vcxproj">
+      <Project>{E1CDF245-91FE-3632-A9E5-E6F540C8FDF6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.vcxproj">
+      <Project>{798BE001-FB49-3B7E-A257-3F31E313C267}</Project>
+      <Name>base</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\moduleinfotool.vcxproj">
+      <Project>{7589B0B7-42A1-3A72-85E0-A117C186C1F4}</Project>
+      <Name>moduleinfotool</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\pluginterfaces.vcxproj">
+      <Project>{6967B72B-5487-3353-9C91-DA7CBF31A929}</Project>
+      <Name>pluginterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.vcxproj">
+      <Project>{E27B64C1-1328-3330-B8B7-1E581E4D6248}</Project>
+      <Name>sdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.vcxproj">
+      <Project>{241977EF-C831-3AB0-A94C-43AF76776B11}</Project>
+      <Name>sdk_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-hosting\validator\validator.vcxproj">
+      <Project>{4F6DF019-7BD5-3F78-B8B9-AD012B98CD4C}</Project>
+      <Name>validator</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\lib\vstgui.vcxproj">
+      <Project>{4BC7B471-CC11-3481-9BD3-C6B342EC6FCE}</Project>
+      <Name>vstgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\vstgui_support.vcxproj">
+      <Project>{2523D111-2DE0-391E-8F17-9123450BB7C1}</Project>
+      <Name>vstgui_support</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\VSTGUI.build\vstgui\uidescription\vstgui_uidescription.vcxproj">
+      <Project>{117707EE-67DB-30E2-8E51-01B0A03064F4}</Project>
+      <Name>vstgui_uidescription</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

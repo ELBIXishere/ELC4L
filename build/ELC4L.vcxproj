@@ -136,7 +136,7 @@
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
       <ImportLibrary>C:/Projects/ELBIXPLUGIN/build/Debug/ELC4L.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/HyeokStreamMaster.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/ELC4L.def</ModuleDefinitionFile>
       <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/build/bin/Debug/ELC4L.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
@@ -197,7 +197,7 @@
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
       <ImportLibrary>C:/Projects/ELBIXPLUGIN/build/Release/ELC4L.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/HyeokStreamMaster.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/ELC4L.def</ModuleDefinitionFile>
       <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/build/bin/Release/ELC4L.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
@@ -258,7 +258,7 @@
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
       <ImportLibrary>C:/Projects/ELBIXPLUGIN/build/MinSizeRel/ELC4L.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/HyeokStreamMaster.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/ELC4L.def</ModuleDefinitionFile>
       <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/build/bin/MinSizeRel/ELC4L.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
@@ -318,7 +318,7 @@
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
       <ImportLibrary>C:/Projects/ELBIXPLUGIN/build/RelWithDebInfo/ELC4L.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/HyeokStreamMaster.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>C:/Projects/ELBIXPLUGIN/ELC4L.def</ModuleDefinitionFile>
       <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/build/bin/RelWithDebInfo/ELC4L.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>

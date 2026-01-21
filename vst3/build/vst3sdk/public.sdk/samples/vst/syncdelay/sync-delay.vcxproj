@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A9010EB4-EB82-3785-9983-0B10B52EB524}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>sync-delay</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\VST3\Debug\sync-delay.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sync-delay.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sync-delay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\VST3\Release\sync-delay.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sync-delay.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sync-delay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>6031;6308;6330;6385;6386;28125;28251;4221</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;SMTG_RENAME_ASSERT=1;DEVELOPMENT=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug";sync_delay_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SMTG_RENAME_ASSERT=1;DEVELOPMENT=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";sync_delay_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Projects\ELBIXPLUGIN\vst3\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Projects\ELBIXPLUGIN\vst3\build\bin\Debug\moduleinfotool.exe -create -version 3.8.0.0 -path C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3 -output C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Projects\ELBIXPLUGIN\vst3\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+C:\Projects\ELBIXPLUGIN\vst3\build\bin\Debug\validator.exe C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3 
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Delete previous link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -rf C:/Users/kjhh9/AppData/Local/Programs/Common/VST3/sync-delay.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Creation of the new link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Debug/sync-delay.vst3  C:/Users/kjhh9/AppData/Local/Programs/Common/VST3/sync-delay.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\..\lib\Debug\sdk.lib;..\..\..\..\..\lib\Debug\sdk_common.lib;..\..\..\..\..\lib\Debug\base.lib;..\..\..\..\..\lib\Debug\pluginterfaces.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Projects/ELBIXPLUGIN/vst3/build/lib/Debug/sync-delay.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/vst3/build/vst3sdk/public.sdk/samples/vst/syncdelay/WIN_PDB64/Debug/sync-delay.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>6031;6308;6330;6385;6386;28125;28251;4221</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SMTG_RENAME_ASSERT=1;RELEASE=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release";sync_delay_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SMTG_RENAME_ASSERT=1;RELEASE=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";sync_delay_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Projects\ELBIXPLUGIN\vst3sdk;C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Projects/ELBIXPLUGIN/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Projects\ELBIXPLUGIN\vst3\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Projects\ELBIXPLUGIN\vst3\build\bin\Release\moduleinfotool.exe -create -version 3.8.0.0 -path C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3 -output C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Projects\ELBIXPLUGIN\vst3\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+C:\Projects\ELBIXPLUGIN\vst3\build\bin\Release\validator.exe  C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Delete previous link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -rf C:/Users/kjhh9/AppData/Local/Programs/Common/VST3/sync-delay.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Creation of the new link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink  C:/Projects/ELBIXPLUGIN/vst3/build/VST3/Release/sync-delay.vst3 C:/Users/kjhh9/AppData/Local/Programs/Common/VST3/sync-delay.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\..\lib\Release\sdk.lib;..\..\..\..\..\lib\Release\sdk_common.lib;..\..\..\..\..\lib\Release\base.lib;..\..\..\..\..\lib\Release\pluginterfaces.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Projects/ELBIXPLUGIN/vst3/build/lib/Release/sync-delay.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Projects/ELBIXPLUGIN/vst3/build/vst3sdk/public.sdk/samples/vst/syncdelay/WIN_PDB64/Release/sync-delay.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/syncdelay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/vst3sdk/public.sdk/samples/vst/syncdelay/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Projects\ELBIXPLUGIN\vst3sdk\cmake\templates\projectversion.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Projects/ELBIXPLUGIN/vst3sdk/public.sdk/samples/vst/syncdelay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/ELBIXPLUGIN/vst3 -BC:/Projects/ELBIXPLUGIN/vst3/build --check-stamp-file C:/Projects/ELBIXPLUGIN/vst3/build/vst3sdk/public.sdk/samples/vst/syncdelay/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Projects\ELBIXPLUGIN\vst3sdk\cmake\templates\projectversion.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst\syncdelay\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\sync.h" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\syncdelaycontroller.cpp" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\syncdelaycontroller.h" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\syncdelayfactory.cpp" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\syncdelayids.h" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\syncdelayprocessor.cpp" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\syncdelayprocessor.h" />
+    <ClInclude Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\source\syncdelayversion.h" />
+    <ClCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\source\main\dllmain.cpp" />
+    <ResourceCompile Include="C:\Projects\ELBIXPLUGIN\vst3sdk\public.sdk\samples\vst\syncdelay\resource\info.rc" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\ZERO_CHECK.vcxproj">
+      <Project>{E1CDF245-91FE-3632-A9E5-E6F540C8FDF6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\base.vcxproj">
+      <Project>{798BE001-FB49-3B7E-A257-3F31E313C267}</Project>
+      <Name>base</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\moduleinfotool.vcxproj">
+      <Project>{7589B0B7-42A1-3A72-85E0-A117C186C1F4}</Project>
+      <Name>moduleinfotool</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\pluginterfaces.vcxproj">
+      <Project>{6967B72B-5487-3353-9C91-DA7CBF31A929}</Project>
+      <Name>pluginterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk.vcxproj">
+      <Project>{E27B64C1-1328-3330-B8B7-1E581E4D6248}</Project>
+      <Name>sdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\sdk_common.vcxproj">
+      <Project>{241977EF-C831-3AB0-A94C-43AF76776B11}</Project>
+      <Name>sdk_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\ELBIXPLUGIN\vst3\build\vst3sdk\public.sdk\samples\vst-hosting\validator\validator.vcxproj">
+      <Project>{4F6DF019-7BD5-3F78-B8B9-AD012B98CD4C}</Project>
+      <Name>validator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

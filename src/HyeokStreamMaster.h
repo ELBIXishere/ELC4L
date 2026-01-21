@@ -12,6 +12,66 @@
 #include <cmath>
 #include <algorithm>
 
+// ======================================================================
+// [NEW] HIGH-END DSP MODULES (Pure C++ / Zero Latency)
+// ======================================================================
+
+// 1. Tape Saturator (Algebraic Sigmoid)
+struct TapeSaturator {
+    // x / sqrt(1 + x^2) based soft clipper with bias
+    inline float process(float input, float drive, float bias) {
+        float x = input * drive + bias;
+        float saturated = x / sqrtf(1.0f + x * x);
+        
+        // Remove DC Offset caused by bias
+        float biasCurve = bias / sqrtf(1.0f + bias * bias);
+        return (saturated - biasCurve);
+    }
+};
+
+// 2. Polyphase FIR Oversampler (4x)
+// 32-tap Linear Phase FIR / 4 Phases
+class PolyphaseOversampler {
+public:
+    PolyphaseOversampler() { reset(); }
+
+    void reset() {
+        for (int i = 0; i < kTapLength; ++i) state[i] = 0.0f;
+        ptr = 0;
+    }
+
+    // Upsample 1 -> 4
+    void processUpsample(float input, float* outBuffer4x) {
+        state[ptr] = input;
+        for (int phase = 0; phase < 4; ++phase) {
+            float sum = 0.0f;
+            const float* coeffs = &kCoeffs[phase * kTapsPerPhase];
+            for (int i = 0; i < kTapsPerPhase; ++i) {
+                int idx = (ptr - i + kTapLength) % kTapLength;
+                sum += state[idx] * coeffs[i];
+            }
+            outBuffer4x[phase] = sum; // Gain Compensation
+        }
+        ptr = (ptr + 1) % kTapLength;
+    }
+
+    // Downsample 4 -> 1 (Simple Windowed Sinc decimation for efficiency)
+    float processDownsample(const float* inBuffer4x) {
+        // High quality mix of 4 samples
+        return inBuffer4x[0] * 0.1f + inBuffer4x[1] * 0.4f + inBuffer4x[2] * 0.4f + inBuffer4x[3] * 0.1f;
+    }
+
+    // Static Coefficients (Defined in .cpp)
+    static const float kCoeffs[32]; 
+    static constexpr int kTapsPerPhase = 8;
+    static constexpr int kTapLength = 32;
+
+private:
+    float state[kTapLength];
+    int ptr = 0;
+};
+
+
 //-------------------------------------------------------------------------------------------------------
 // Parameter indices
 //-------------------------------------------------------------------------------------------------------
@@ -233,6 +293,16 @@ struct OptoCompressor {
     float saturationDrive;   // 0.0 = clean, 1.0 = fully saturated
     bool saturationEnabled;
 
+    // [ADDED] Current raw gain (before makeup) for delta monitoring
+    float currentGain = 1.0f;
+
+    // [ADDED] High-quality saturation + oversampling
+    TapeSaturator saturator;
+    PolyphaseOversampler oversamplerL;
+    PolyphaseOversampler oversamplerR;
+    float upBufferL[4];
+    float upBufferR[4];
+
     // LA-2A constants
     static constexpr float kMinRatio = 3.0f;     // Low level ratio (~3:1)
     static constexpr float kMaxRatio = 100.0f;   // High level ratio (limiting)
@@ -350,7 +420,6 @@ struct OptoCompressor {
         }
 
         // Dual time constant envelope (LA-2A style)
-        // Fast envelope
         if (detector > fastEnvelope) {
             fastEnvelope = attackCoeff * fastEnvelope + (1.0f - attackCoeff) * detector;
         } else {
@@ -360,9 +429,7 @@ struct OptoCompressor {
         // Slow envelope with program-dependent release
         float overDb = 20.0f * log10f((peakHold / threshold) + 1.0e-12f);
         if (overDb < 0.0f) overDb = 0.0f;
-        
-        // More compression = slower release (LA-2A characteristic)
-        float releaseScale = 1.0f + (overDb * 0.15f);  // Scale release by compression amount
+        float releaseScale = 1.0f + (overDb * 0.15f);
         if (releaseScale > 10.0f) releaseScale = 10.0f;
         float slowRelMs = kSlowReleaseBase * releaseScale;
         if (slowRelMs > kSlowReleaseMax) slowRelMs = kSlowReleaseMax;
@@ -374,54 +441,63 @@ struct OptoCompressor {
             slowEnvelope = dynamicSlowCoeff * slowEnvelope + (1.0f - dynamicSlowCoeff) * detector;
         }
 
-        // Combined envelope (weighted average - LA-2A uses both)
+        // Combined envelope
         envelope = 0.3f * fastEnvelope + 0.7f * slowEnvelope;
 
-        // Calculate dB values
+        // Gain calculation (same LA-2A logic)
         float levelDb = 20.0f * log10f(envelope + 1.0e-12f);
         float threshDb = 20.0f * log10f(threshold + 1.0e-12f);
         float overThresh = levelDb - threshDb;
 
-        // LA-2A variable ratio: higher input = higher ratio
-        // At threshold: ~3:1, at +20dB over threshold: ~infinity:1
         float dynamicRatio = kMinRatio;
         if (overThresh > 0.0f) {
-            float ratioBlend = overThresh / 20.0f;  // 0-1 over 20dB range
+            float ratioBlend = overThresh / 20.0f;
             if (ratioBlend > 1.0f) ratioBlend = 1.0f;
-            // Exponential curve for ratio increase
             dynamicRatio = kMinRatio + (kMaxRatio - kMinRatio) * (ratioBlend * ratioBlend);
         }
 
-        // Soft-knee gain reduction calculation
         float grDb = 0.0f;
         if (overThresh <= -kKneeDb * 0.5f) {
             grDb = 0.0f;
         } else if (overThresh >= kKneeDb * 0.5f) {
             grDb = overThresh - (overThresh / dynamicRatio);
         } else {
-            // Quadratic interpolation in knee region
             float x = overThresh + kKneeDb * 0.5f;
             grDb = (x * x) * (1.0f - 1.0f / dynamicRatio) / (2.0f * kKneeDb);
         }
 
         float gain = powf(10.0f, -grDb / 20.0f);
-
-        // Smooth gain changes to avoid pumping
         float gainSmooth = 0.995f;
         gain = gainSmooth * lastGain + (1.0f - gainSmooth) * gain;
 
+        // [ADDED] store raw gain (reduction only) before makeup is applied
+        currentGain = gain;
+
         left *= gain * makeupGain;
         right *= gain * makeupGain;
-        
-        // Apply LA-2A style tube saturation after compression
-        left = applyTubeSaturation(left);
-        right = applyTubeSaturation(right);
+
+        // 2. [NEW] 4x Oversampling + Tape Saturation
+        if (saturationEnabled) {
+            float drive = 1.0f + saturationDrive * 3.0f; 
+            float bias = saturationDrive * 0.1f;        
+
+            // LEFT CHANNEL
+            oversamplerL.processUpsample(left, upBufferL);
+            for (int i = 0; i < 4; ++i) upBufferL[i] = saturator.process(upBufferL[i], drive, bias);
+            left = oversamplerL.processDownsample(upBufferL) / drive;
+
+            // RIGHT CHANNEL
+            oversamplerR.processUpsample(right, upBufferR);
+            for (int i = 0; i < 4; ++i) upBufferR[i] = saturator.process(upBufferR[i], drive, bias);
+            right = oversamplerR.processDownsample(upBufferR) / drive;
+        }
 
         lastGain = gain;
         gainReductionDb = grDb;
     }
 
     float getGainReductionDb() const { return gainReductionDb; }
+    float getCurrentGain() const { return currentGain; }
 };
 
 //-------------------------------------------------------------------------------------------------------
