@@ -1,3 +1,4 @@
+﻿// -*- coding: utf-8 -*-
 //-------------------------------------------------------------------------------------------------------
 // ELC4L Editor - Premium Pro-Q Style UI with Win32 GDI
 // ELBIX 4-Band Compressor + Limiter - Dark & Gold Theme
@@ -21,8 +22,8 @@
 //-------------------------------------------------------------------------------------------------------
 // Editor dimensions (optimized pixel-perfect layout - reduced width for tighter design)
 //-------------------------------------------------------------------------------------------------------
-constexpr int kEditorWidth = 980;
-constexpr int kEditorHeight = 700;
+constexpr int kEditorWidth = 1020;
+constexpr int kEditorHeight = 720;
 
 //-------------------------------------------------------------------------------------------------------
 // Premium Dark & Gold Color Theme
@@ -49,11 +50,14 @@ constexpr int kEditorHeight = 700;
 #define ELC_BAND_HIMID      RGB(100, 150, 220)
 #define ELC_BAND_HIGH       RGB(200, 180, 100)
 
-// Spectrum colors
-#define ELC_SPEC_INPUT      RGB(80, 180, 220)
-#define ELC_SPEC_OUTPUT     RGB(255, 180, 80)
-#define ELC_SPEC_FILL_IN    RGB(30, 70, 90)
-#define ELC_SPEC_FILL_OUT   RGB(80, 60, 30)
+// [Upgrade] FabFilter Pro-Q Style Neon Colors
+// Input: Deep Cyan / Output: Warm Gold
+#define ELC_SPEC_INPUT      RGB(0, 200, 255)    // Cyan Neon (Line)
+#define ELC_SPEC_OUTPUT     RGB(255, 180, 50)   // Gold Neon (Line)
+
+// Fill colors (slightly darker/saturated for the body)
+#define ELC_SPEC_FILL_IN    RGB(0, 100, 150)    // Deep Cyan Fill
+#define ELC_SPEC_FILL_OUT   RGB(180, 100, 20)   // Deep Gold Fill
 
 // Limiter color
 #define ELC_LIMITER         RGB(255, 130, 70)
@@ -160,17 +164,19 @@ private:
     void drawBackground(HDC hdc);
     void drawHeader(HDC hdc);
     void drawSpectrumPanel(HDC hdc);
+    void drawSidechainControls(HDC hdc);
     void drawSpectrumCurves(HDC hdc, const float* specIn, const float* specOut, int numBins);
     void drawCrossoverMarkers(HDC hdc, float xo1, float xo2, float xo3);
     void drawCrossoverDragLines(HDC hdc);  // Draggable crossover lines on spectrum
     void drawBandSection(HDC hdc);
-    void drawBandButtons(HDC hdc);  // M/S/Δ buttons
+    void drawBandButtons(HDC hdc);  // M/S/? buttons
     void drawBypassButtons(HDC hdc);  // Bypass buttons for bands and limiter
     void drawLimiterSection(HDC hdc);
     void drawMeterSection(HDC hdc);
     void drawControl(HDC hdc, const Control& ctrl, float value);
     void drawKnob(HDC hdc, const Control& ctrl, float value);
     void drawFader(HDC hdc, const Control& ctrl, float value);
+    void drawSlider(HDC hdc, const Control& ctrl, float value);
     void drawControlValue(HDC hdc, const Control& ctrl, float value);
     void drawLufs(HDC hdc, float lufs);
     void drawVerticalMeter(HDC hdc, int x, int y, int w, int h, float db, 
@@ -190,8 +196,10 @@ private:
     void onMouseUp();
     void onMouseWheel(int delta, bool shiftHeld);
     void onDoubleClick(int x, int y);  // Double-click for value input
-    int hitTestMSDButton(int x, int y);  // Returns: -1=none, 0-3=M, 4-7=S, 8-11=Δ
+    int hitTestMSDButton(int x, int y);  // Returns: -1=none, 0-3=M, 4-7=S, 8-11=?
     int hitTestBypassButton(int x, int y);  // Returns: -1=none, 0-3=band bypass, 4=limiter bypass
+    int hitTestSidechainControl(int x, int y); // SC button / handle hit test
+    int hitTestMSModeButton(int x, int y); // M/S mode button below bypass
     int hitTestValueArea(int x, int y);  // Returns control index for value area click
     void showValueInputDialog(int controlIndex);  // Show text input dialog
     
@@ -207,7 +215,7 @@ private:
     HFONT smallFont;
     
     // Controls
-    static constexpr int kNumControls = 14;
+    static constexpr int kNumControls = 15;
     Control controls[kNumControls];
     
     // Interaction state
@@ -220,8 +228,24 @@ private:
     // Crossover drag state
     int activeCrossover;       // -1=none, 0-2=xover being dragged
     int dragStartX;            // Start X for crossover drag
+    // Sidechain drag state
+    bool activeSidechainDrag = false;
+    int scDragStartX = 0;
+    float scDragStartValue = 0.0f;
     
     DWORD lastUiUpdateMs;
+    
+    // Peak-hold state (IN/OUT, LUFS, per-band GR, limiter GR)
+    float peakIO[2];           // 0 = IN, 1 = OUT
+    DWORD peakIOTime[2];
+    float peakLUFS;
+    DWORD peakLUFSTime;
+    float peakGR[4];
+    DWORD peakGRTime[4];
+    float peakLimiterGR;
+    DWORD peakLimiterGRTime;
+    // Peak hold duration (ms)
+    static constexpr DWORD kPeakHoldMs = 8000; // 8 seconds hold
 };
 
 #endif // __HyeokStreamEditor__

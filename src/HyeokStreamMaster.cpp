@@ -1,3 +1,4 @@
+﻿// -*- coding: utf-8 -*-
 //-------------------------------------------------------------------------------------------------------
 // HyeokStreamMaster - VST2 Plugin for OBS
 // Core plugin implementation with 4-Band Opto Compressor + Limiter + LUFS
@@ -119,34 +120,106 @@ void HyeokStreamMaster::processReplacing(float** inputs, float** outputs, VstInt
             makeupGains[b] = dbToLinear(makeupDb);
         }
 
-        // 2. Process each band (Modified Bypass Logic)
+        // 2. Process each band (Corrected M/S Logic: Loose Side)
         // Band 1
+        bool bandModeMS0 = (parameters[kParamBand1Mode] > 0.5f);
         if (!bandBypass[0]) {
-            bandComps[0].process(b1L, b1R); // Active: Comp + Makeup + Sat
+            if (bandModeMS0) {
+                // M/S with Loose Side Logic
+                float M = 0.5f * (b1L + b1R);
+                float S = 0.5f * (b1L - b1R);
+
+                float pM = M, pS = S;
+                bandComps[0].process(pM, pS);
+
+                // Loose side: reduce compression on S channel when gain < 1
+                float gain = bandComps[0].getCurrentGain();
+                if (gain < 1.0f && gain > 0.0f) {
+                    float looseGain = 1.0f - (1.0f - gain) * 0.5f; // half the compression on side
+                    float correction = looseGain / gain;
+                    pS *= correction;
+                }
+
+                b1L = pM + pS;
+                b1R = pM - pS;
+            } else {
+                bandComps[0].process(b1L, b1R);
+            }
         } else {
-            b1L *= makeupGains[0];          // Bypass: Makeup Only (Volume Match)
+            b1L *= makeupGains[0];
             b1R *= makeupGains[0];
         }
 
-        // Band 2
+        // Band 2 (same logic)
+        bool bandModeMS1 = (parameters[kParamBand2Mode] > 0.5f);
         if (!bandBypass[1]) {
-            bandComps[1].process(b2L, b2R);
+            if (bandModeMS1) {
+                float M = 0.5f * (b2L + b2R);
+                float S = 0.5f * (b2L - b2R);
+                float pM = M, pS = S;
+                bandComps[1].process(pM, pS);
+
+                float gain = bandComps[1].getCurrentGain();
+                if (gain < 1.0f && gain > 0.0f) {
+                    float looseGain = 1.0f - (1.0f - gain) * 0.5f;
+                    pS *= (looseGain / gain);
+                }
+
+                b2L = pM + pS;
+                b2R = pM - pS;
+            } else {
+                bandComps[1].process(b2L, b2R);
+            }
         } else {
             b2L *= makeupGains[1];
             b2R *= makeupGains[1];
         }
 
         // Band 3
+        bool bandModeMS2 = (parameters[kParamBand3Mode] > 0.5f);
         if (!bandBypass[2]) {
-            bandComps[2].process(b3L, b3R);
+            if (bandModeMS2) {
+                float M = 0.5f * (b3L + b3R);
+                float S = 0.5f * (b3L - b3R);
+                float pM = M, pS = S;
+                bandComps[2].process(pM, pS);
+
+                float gain = bandComps[2].getCurrentGain();
+                if (gain < 1.0f && gain > 0.0f) {
+                    float looseGain = 1.0f - (1.0f - gain) * 0.5f;
+                    pS *= (looseGain / gain);
+                }
+
+                b3L = pM + pS;
+                b3R = pM - pS;
+            } else {
+                bandComps[2].process(b3L, b3R);
+            }
         } else {
             b3L *= makeupGains[2];
             b3R *= makeupGains[2];
         }
 
         // Band 4
+        bool bandModeMS3 = (parameters[kParamBand4Mode] > 0.5f);
         if (!bandBypass[3]) {
-            bandComps[3].process(b4L, b4R);
+            if (bandModeMS3) {
+                float M = 0.5f * (b4L + b4R);
+                float S = 0.5f * (b4L - b4R);
+                float pM = M, pS = S;
+                bandComps[3].process(pM, pS);
+
+                float gain = bandComps[3].getCurrentGain();
+                if (gain < 1.0f && gain > 0.0f) {
+                    float looseGain = 1.0f - (1.0f - gain) * 0.5f;
+                    pS *= (looseGain / gain);
+                }
+
+                b4L = pM + pS;
+                b4R = pM - pS;
+            } else {
+                bandComps[3].process(b4L, b4R);
+            }
         } else {
             b4L *= makeupGains[3];
             b4R *= makeupGains[3];
@@ -242,6 +315,14 @@ void HyeokStreamMaster::setParameter(VstInt32 index, float value) {
         case kParamLimiterRelease:
             updateLimiter();
             break;
+        case kParamSidechainFreq:
+        case kParamSidechainActive:
+        case kParamBand1Mode:
+        case kParamBand2Mode:
+        case kParamBand3Mode:
+        case kParamBand4Mode:
+            updateCompressors();
+            break;
     }
     
     if (editor) {
@@ -314,6 +395,20 @@ void HyeokStreamMaster::getParameterDisplay(VstInt32 index, char* text) {
         case kParamLimiterRelease:
             sprintf(text, "%.0f", normalizedToLimiterReleaseMs(parameters[kParamLimiterRelease]));
             break;
+        case kParamSidechainFreq: {
+            float scFreq = 20.0f * powf(20000.0f / 20.0f, parameters[kParamSidechainFreq]);
+            sprintf(text, "%.0f", scFreq);
+            break;
+        }
+        case kParamSidechainActive:
+            sprintf(text, "%s", parameters[kParamSidechainActive] > 0.5f ? "On" : "Off");
+            break;
+        case kParamBand1Mode:
+        case kParamBand2Mode:
+        case kParamBand3Mode:
+        case kParamBand4Mode:
+            sprintf(text, "%s", parameters[index] > 0.5f ? "M/S" : "ST" );
+            break;
         default:
             *text = 0;
     }
@@ -362,6 +457,24 @@ void HyeokStreamMaster::getParameterName(VstInt32 index, char* text) {
             break;
         case kParamLimiterRelease:
             strcpy(text, "Limiter Rel");
+            break;
+        case kParamSidechainFreq:
+            strcpy(text, "SC HPF");
+            break;
+        case kParamSidechainActive:
+            strcpy(text, "SC On");
+            break;
+        case kParamBand1Mode:
+            strcpy(text, "B1 Mode");
+            break;
+        case kParamBand2Mode:
+            strcpy(text, "B2 Mode");
+            break;
+        case kParamBand3Mode:
+            strcpy(text, "B3 Mode");
+            break;
+        case kParamBand4Mode:
+            strcpy(text, "B4 Mode");
             break;
         default:
             *text = 0;
@@ -464,6 +577,16 @@ void HyeokStreamMaster::updateCompressors() {
         bandComps[i].setThresholdDb(threshDb[i]);
         bandComps[i].setMakeupDb(makeupDb[i]);
         bandComps[i].updateCoefficients();
+    }
+
+    // Sidechain settings applied to all band compressors
+    bool scActive = (parameters[kParamSidechainActive] > 0.5f);
+    // Map normalized 0..1 -> 20..20000 Hz (logarithmic)
+    float scNorm = parameters[kParamSidechainFreq];
+    float scFreq = 20.0f * powf(20000.0f / 20.0f, scNorm); // 20..20000
+    for (int i = 0; i < 4; ++i) {
+        bandComps[i].setSidechainEnabled(scActive);
+        bandComps[i].setSidechainFreq(scFreq);
     }
 }
 
@@ -664,7 +787,7 @@ void HyeokStreamMaster::computeSpectrum(const float* input, float* output) {
 }
 
 //-------------------------------------------------------------------------------------------------------
-// Update Display Buffers (Downsample 512 bins → 128 Bezier-ready points)
+// Update Display Buffers (Downsample 512 bins ??128 Bezier-ready points)
 //-------------------------------------------------------------------------------------------------------
 void HyeokStreamMaster::updateDisplayBuffers() {
     const int srcBins = kSpectrumBins;

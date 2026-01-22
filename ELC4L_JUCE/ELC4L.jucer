@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="ELC4L001" name="ELC4L" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1"
+              companyName="Hyeok Audio" companyCopyright="2024 Hyeok Audio"
+              companyWebsite="https://hyeokaudio.com" companyEmail="contact@hyeokaudio.com"
+              pluginName="ELC4L" pluginDesc="Elite 4-Band Compressor + Limiter"
+              pluginManufacturer="Hyeok Audio" pluginManufacturerCode="HyAu"
+              pluginCode="ELC4" pluginChannelConfigs="{2, 2}"
+              pluginIsSynth="0" pluginWantsMidiInput="0" pluginProducesMidiOutput="0"
+              pluginIsMidiEffect="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="ELC4LAU" aaxIdentifier="com.hyeokaudio.elc4l"
+              pluginAAXCategory="2" bundleIdentifier="com.hyeokaudio.elc4l"
+              pluginFormats="buildAU,buildVST,buildVST3,buildStandalone"
+              cppLanguageStandard="17" version="2.0.0">
+  <MAINGROUP id="MainGroup" name="ELC4L">
+    <GROUP id="SourceGroup" name="Source">
+      <FILE id="PluginProcessor_cpp" name="PluginProcessor.cpp" compile="1" resource="0" file="Source/PluginProcessor.cpp"/>
+      <FILE id="PluginProcessor_h" name="PluginProcessor.h" compile="0" resource="0" file="Source/PluginProcessor.h"/>
+      <FILE id="PluginEditor_cpp" name="PluginEditor.cpp" compile="1" resource="0" file="Source/PluginEditor.cpp"/>
+      <FILE id="PluginEditor_h" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <GROUP id="DSPGroup" name="DSP">
+        <FILE id="DSPModules_h" name="DSPModules.h" compile="0" resource="0" file="Source/DSP/DSPModules.h"/>
+      </GROUP>
+      <GROUP id="UIGroup" name="UI">
+        <FILE id="CustomLookAndFeel_cpp" name="CustomLookAndFeel.cpp" compile="1" resource="0" file="Source/UI/CustomLookAndFeel.cpp"/>
+        <FILE id="CustomLookAndFeel_h" name="CustomLookAndFeel.h" compile="0" resource="0" file="Source/UI/CustomLookAndFeel.h"/>
+        <FILE id="SpectrumAnalyzer_cpp" name="SpectrumAnalyzer.cpp" compile="1" resource="0" file="Source/UI/SpectrumAnalyzer.cpp"/>
+        <FILE id="SpectrumAnalyzer_h" name="SpectrumAnalyzer.h" compile="0" resource="0" file="Source/UI/SpectrumAnalyzer.h"/>
+        <FILE id="Meters_cpp" name="Meters.cpp" compile="1" resource="0" file="Source/UI/Meters.cpp"/>
+        <FILE id="Meters_h" name="Meters.h" compile="0" resource="0" file="Source/UI/Meters.h"/>
+        <FILE id="BandSection_cpp" name="BandSection.cpp" compile="1" resource="0" file="Source/UI/BandSection.cpp"/>
+        <FILE id="BandSection_h" name="BandSection.h" compile="0" resource="0" file="Source/UI/BandSection.h"/>
+        <FILE id="LimiterSection_cpp" name="LimiterSection.cpp" compile="1" resource="0" file="Source/UI/LimiterSection.cpp"/>
+        <FILE id="LimiterSection_h" name="LimiterSection.h" compile="0" resource="0" file="Source/UI/LimiterSection.h"/>
+      </GROUP>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022" extraCompilerFlags="/utf-8">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="ELC4L"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="ELC4L" optimisation="3"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path=""/>
+        <MODULEPATH id="juce_audio_devices" path=""/>
+        <MODULEPATH id="juce_audio_formats" path=""/>
+        <MODULEPATH id="juce_audio_plugin_client" path=""/>
+        <MODULEPATH id="juce_audio_processors" path=""/>
+        <MODULEPATH id="juce_audio_utils" path=""/>
+        <MODULEPATH id="juce_core" path=""/>
+        <MODULEPATH id="juce_data_structures" path=""/>
+        <MODULEPATH id="juce_dsp" path=""/>
+        <MODULEPATH id="juce_events" path=""/>
+        <MODULEPATH id="juce_graphics" path=""/>
+        <MODULEPATH id="juce_gui_basics" path=""/>
+        <MODULEPATH id="juce_gui_extra" path=""/>
+      </MODULEPATHS>
+    </VS2022>
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-Wall">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="ELC4L"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="ELC4L" optimisation="3"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path=""/>
+        <MODULEPATH id="juce_audio_devices" path=""/>
+        <MODULEPATH id="juce_audio_formats" path=""/>
+        <MODULEPATH id="juce_audio_plugin_client" path=""/>
+        <MODULEPATH id="juce_audio_processors" path=""/>
+        <MODULEPATH id="juce_audio_utils" path=""/>
+        <MODULEPATH id="juce_core" path=""/>
+        <MODULEPATH id="juce_data_structures" path=""/>
+        <MODULEPATH id="juce_dsp" path=""/>
+        <MODULEPATH id="juce_events" path=""/>
+        <MODULEPATH id="juce_graphics" path=""/>
+        <MODULEPATH id="juce_gui_basics" path=""/>
+        <MODULEPATH id="juce_gui_extra" path=""/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+</JUCERPROJECT>

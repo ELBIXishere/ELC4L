@@ -90,6 +90,13 @@ enum HyeokParameters {
     kParamLimiterThresh,    // Limiter threshold (dB)
     kParamLimiterCeiling,   // Limiter output ceiling (dB)
     kParamLimiterRelease,   // Limiter release time (ms)
+    // [NEW] Sidechain & M/S Params
+    kParamSidechainFreq,   // Sidechain HPF cutoff (normalized 0-1 -> 20-500Hz mapped in UI)
+    kParamSidechainActive, // Sidechain ON/OFF
+    kParamBand1Mode,       // 0=Stereo, 1=M/S
+    kParamBand2Mode,
+    kParamBand3Mode,
+    kParamBand4Mode,
     kNumParams
 };
 
@@ -303,6 +310,18 @@ struct OptoCompressor {
     float upBufferL[4];
     float upBufferR[4];
 
+    // [NEW] Sidechain HPF state (1-pole lowpass used to derive HPF: HP = in - LP)
+    bool sidechainEnabled = false;
+    float scFilterCoeff = 0.0f; // exp(-2*pi*fc / sr)
+    float scFilterState = 0.0f; // lowpass state
+
+    void setSidechainEnabled(bool enabled) { sidechainEnabled = enabled; }
+    void setSidechainFreq(float fc) {
+        if (fc <= 0.0f || sampleRate <= 0.0f) { scFilterCoeff = 0.0f; return; }
+        // Coefficient for simple 1-pole lowpass approximation
+        scFilterCoeff = expf(-2.0f * 3.14159265358979323846f * fc / sampleRate);
+    }
+
     // LA-2A constants
     static constexpr float kMinRatio = 3.0f;     // Low level ratio (~3:1)
     static constexpr float kMaxRatio = 100.0f;   // High level ratio (limiting)
@@ -408,8 +427,17 @@ struct OptoCompressor {
     }
 
     void process(float& left, float& right) {
-        // RMS detection (LA-2A is RMS-based)
-        float level = 0.5f * (left * left + right * right);
+        // Internal Sidechain HPF: compute mono detector then optionally HPF it
+        float monoIn = 0.5f * (left + right);
+        float detectorSignal = monoIn;
+
+        if (sidechainEnabled) {
+            // 1-pole LP: scFilterState = a * scFilterState + (1-a) * x
+            scFilterState = scFilterState * scFilterCoeff + monoIn * (1.0f - scFilterCoeff);
+            detectorSignal = monoIn - scFilterState; // HP = input - LP
+        }
+
+        float level = detectorSignal * detectorSignal;
         float detector = sqrtf(level + 1.0e-12f);
 
         // Track peak for dynamic ratio calculation

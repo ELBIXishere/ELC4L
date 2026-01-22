@@ -1,0 +1,54 @@
+# Build directories
+build/
+build32/
+build64/
+build_x64/
+build_x86/
+ELC4L_JUCE/build*/
+
+# Output binaries
+output/*.dll
+output/*.vst3
+output/*.zip
+output/ELC4L_VST2_x64/
+output/ELC4L_VST2_x86/
+output/ELC4L_VST3/
+output/ELC4Lv2/
+
+# Visual Studio
+*.vcxproj.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+.vs/
+x64/
+x86/
+Win32/
+Release/
+Debug/
+
+# JUCE specific
+ELC4L_JUCE/Builds/
+ELC4L_JUCE/JuceLibraryCode/
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.txt
+!README.txt
+
+# Temporary files
+*.tmp
+*.temp
+*.bak

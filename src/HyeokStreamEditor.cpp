@@ -1,3 +1,4 @@
+﻿// -*- coding: utf-8 -*-
 //-------------------------------------------------------------------------------------------------------
 // ELC4L Editor - Premium Pro-Q Style UI Implementation
 // ELBIX 4-Band Compressor + Limiter - Dark & Gold Theme
@@ -8,6 +9,10 @@
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
+#include <vector>
+
+// [異붽?] 諛섑닾紐?泥섎━瑜??꾪븳 ?쇱씠釉뚮윭由?留곹겕
+#pragma comment(lib, "Msimg32.lib") 
 
 // Simple logging helper: OutputDebugString + append to file for easier capture
 static void EditorLog(const char* msg) {
@@ -40,19 +45,22 @@ static void EditorLog(const char* msg) {
 // Crossover: Draggable lines on spectrum analyzer
 //-------------------------------------------------------------------------------------------------------
 namespace Layout {
-    // Font-based spacing for no overlap - INCREASED for more breathing room
-    constexpr int FontMargin = 20;      // Increased spacing between elements
-    constexpr int Padding = 18;
-    
-    // ===== WINDOW SIZE (reduced width) =====
-    constexpr int WindowW = 980;        // Reduced from 1100
-    constexpr int WindowH = 700;
-    
+    // Font-based spacing for no overlap
+    constexpr int FontMargin = 26;
+    constexpr int Padding = 22;
+
+    // ===== WINDOW SIZE (Increased for left spacing) =====
+    constexpr int WindowW = 1020;        // 980 -> 1020
+    constexpr int WindowH = 720;         // 700 -> 720
+
+    // Global left offset to give breathing room
+    constexpr int GlobalOffsetX = 80;
+
     // ===== TOP HALF: SPECTRUM ANALYZER =====
-    constexpr int SpectrumX = 15;
+    constexpr int SpectrumX = 15 + GlobalOffsetX; // Offset applied
     constexpr int SpectrumY = 55;
-    constexpr int SpectrumW = 860;      // Reduced width (was 1070)
-    constexpr int SpectrumH = 260;      // Slightly reduced height (was 300)
+    constexpr int SpectrumW = 860;
+    constexpr int SpectrumH = 260;
     
     // Crossover drag lines (no knobs - lines on spectrum)
     constexpr int XoverLineY1 = SpectrumY + 20;   // Top of draggable area
@@ -60,12 +68,13 @@ namespace Layout {
     constexpr int XoverLineWidth = 8;   // Click area width for drag
     
     // ===== BOTTOM HALF: COMPRESSORS + METERS =====
-    constexpr int BandSectionY = SpectrumY + SpectrumH + FontMargin + 15;  // More space, moved down
-    constexpr int BandHeight = 310;     // Remaining space
-    
+    constexpr int BandSectionY = SpectrumY + SpectrumH + FontMargin + 35; // +20px to give limiter text room
+    constexpr int BandHeight = 310;
+
     // Each band column (4 bands + limiter + IN/OUT)
-    constexpr int BandWidth = 140;      // Reduced from 160 for tighter spacing
-    constexpr int BandStartX = 20;      // Slightly moved right
+    constexpr int BandWidth = 140;
+    // Move band section right to balance layout (reduce empty space on right)
+    constexpr int BandStartX = 60 + GlobalOffsetX; // Shifted right
     
     // Band internal layout
     constexpr int BandTitleH = 26;      // Title bar height - increased
@@ -100,20 +109,33 @@ namespace Layout {
     constexpr int BypassBtnW = DeltaBtnW;
     constexpr int BypassBtnH = 16;
     
-    // Limiter section (after 4 bands) - moved right
-    constexpr int LimiterX = BandStartX + BandWidth * 4 + 25;  // More gap before limiter
+    // Limiter section (after 4 bands)
+    // Narrow gap between compressor bands and limiter
+    constexpr int LimiterX = BandStartX + BandWidth * 4 + 8;
     constexpr int LimiterY = BandSectionY;
     constexpr int LimiterW = 130;
-    
-    // Limiter bypass position (centered below limiter meters)
-    constexpr int LimBypassOffsetY = GRMeterOffsetY + GRMeterH + FontMargin + 40;  // Lower position
-    
-    // ===== IN/OUT METERS (moved left from far right) =====
-    constexpr int IOSectionX = 875;     // Moved left (was 1000)
+
+    // Limiter bypass position (slightly higher)
+    constexpr int LimBypassOffsetY = GRMeterOffsetY + GRMeterH + FontMargin + 30;
+
+    // ===== IN/OUT METERS (moved left) =====
+    // IO section moved slightly left to provide breathing room on the right edge
+    constexpr int IOSectionX = 800 + GlobalOffsetX;
     constexpr int IOMeterW = 24;
     constexpr int IOMeterH = 160;
     constexpr int IOMeterOffsetY = BandTitleH + FontMargin;
     constexpr int IOMeterGap = 10;
+
+    // Sidechain button constants (left sidebar)
+    constexpr int SCButtonX = 20;
+    constexpr int SCButtonY = SpectrumY;
+    constexpr int SCButtonW = 40;
+    constexpr int SCButtonH = 24;
+
+    // [NEW] M/S Mode Button Offset (below bypass)
+    constexpr int MSModeBtnOffsetY = BypassBtnOffsetY + BypassBtnH + 8;
+    constexpr int MSModeBtnW = DeltaBtnW;
+    constexpr int MSModeBtnH = 16;
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -234,6 +256,21 @@ void initializeControlsHelper(Control* controls) {
     controls[13].maxVal = 500.0f;
     controls[13].isBipolar = false;
     controls[13].isFrequency = false;
+
+    // Sidechain HPF control (index 14) - convert to vertical fader at left edge
+    controls[14].paramIndex = kParamSidechainFreq;
+    controls[14].type = CTRL_FADER; // vertical fader
+    controls[14].color = ELC_GOLD_PRIMARY; // gold accent for SC
+    controls[14].label = "SC HPF";
+    controls[14].minVal = 20.0f;
+    controls[14].maxVal = 20000.0f; // expanded range 20..20k
+    controls[14].isBipolar = false;
+    controls[14].isFrequency = true;
+    // Place the SC HPF fader in left sidebar under the SC button
+    controls[14].x = 25; // center under SC button (x=20, button width 40)
+    controls[14].y = SpectrumY + 35; // just below the SC button
+    controls[14].width = 30;
+    controls[14].height = SpectrumH - 50; // tall fader matching spectrum height
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -263,6 +300,11 @@ HyeokStreamEditor::HyeokStreamEditor(AudioEffect* effect)
     editorRect.bottom = kEditorHeight;
     
     initializeControlsHelper(controls);
+    // Initialize peak-hold values
+    for (int i = 0; i < 2; ++i) { peakIO[i] = -1000.0f; peakIOTime[i] = 0; }
+    peakLUFS = -1000.0f; peakLUFSTime = 0;
+    for (int i = 0; i < 4; ++i) { peakGR[i] = -1000.0f; peakGRTime[i] = 0; }
+    peakLimiterGR = -1000.0f; peakLimiterGRTime = 0;
 }
 
 HyeokStreamEditor::~HyeokStreamEditor() {
@@ -558,6 +600,7 @@ void HyeokStreamEditor::draw(HDC hdc) {
     if (!plugin) return;
     
     drawSpectrumPanel(hdc);
+    drawSidechainControls(hdc);
     drawSpectrumCurves(hdc, plugin->getDisplayIn(), plugin->getDisplayOut(), kDisplayBins);
     drawCrossoverMarkers(hdc, plugin->getXover1Hz(), plugin->getXover2Hz(), plugin->getXover3Hz());
     
@@ -565,7 +608,7 @@ void HyeokStreamEditor::draw(HDC hdc) {
     drawBypassButtons(hdc);  // Bypass buttons for bands
     drawLimiterSection(hdc);
     drawMeterSection(hdc);
-    drawBandButtons(hdc);  // M/S/Δ buttons - now below meters
+    drawBandButtons(hdc);  // M/S/? buttons - now below meters
     drawLufs(hdc, plugin->getLufsMomentary());
     
     for (int i = 0; i < kNumControls; ++i) {
@@ -687,6 +730,212 @@ void HyeokStreamEditor::drawSpectrumPanel(HDC hdc) {
 }
 
 //-------------------------------------------------------------------------------------------------------
+// Draw Sidechain controls inside the spectrum area
+//-------------------------------------------------------------------------------------------------------
+
+// [NEW] 諛섑닾紐??ㅺ컖??洹몃━湲??ы띁 ?⑥닔 (FabFilter ?ㅽ???Fill)
+void FillAlphaPoly(HDC hdc, const std::vector<POINT>& pts, COLORREF color, BYTE alpha) {
+    if (pts.empty()) return;
+
+    // 1. ?꾩껜 ?곸뿭 怨꾩궛 (Bounding Box)
+    RECT bounds = { pts[0].x, pts[0].y, pts[0].x, pts[0].y };
+    for (const auto& p : pts) {
+        if (p.x < bounds.left) bounds.left = p.x;
+        if (p.x > bounds.right) bounds.right = p.x;
+        if (p.y < bounds.top) bounds.top = p.y;
+        if (p.y > bounds.bottom) bounds.bottom = p.y;
+    }
+    int w = bounds.right - bounds.left;
+    int h = bounds.bottom - bounds.top;
+    if (w <= 0 || h <= 0) return;
+
+    // 2. ?꾩떆 硫붾え由?DC ?앹꽦
+    HDC memDC = CreateCompatibleDC(hdc);
+    
+    // 3. 32鍮꾪듃 鍮꾪듃留??앹꽦 (Alpha 梨꾨꼸 吏?먯슜)
+    BITMAPINFO bmi = {0};
+    bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+    bmi.bmiHeader.biWidth = w;
+    bmi.bmiHeader.biHeight = h; // Top-down
+    bmi.bmiHeader.biPlanes = 1;
+    bmi.bmiHeader.biBitCount = 32;
+    bmi.bmiHeader.biCompression = BI_RGB;
+
+    void* pBits = nullptr;
+    HBITMAP hBmp = CreateDIBSection(memDC, &bmi, DIB_RGB_COLORS, &pBits, nullptr, 0);
+    HBITMAP oldBmp = (HBITMAP)SelectObject(memDC, hBmp);
+
+    // 4. 諛곌꼍???щ챸?섍쾶 珥덇린??
+    RECT tempRect = {0, 0, w, h};
+    HBRUSH black = CreateSolidBrush(RGB(0,0,0));
+    FillRect(memDC, &tempRect, black);
+    DeleteObject(black);
+
+    // 5. ?ㅺ컖??洹몃━湲?(醫뚰몴瑜?0,0 湲곗??쇰줈 ?대룞)
+    std::vector<POINT> offsetPts = pts;
+    for (auto& p : offsetPts) {
+        p.x -= bounds.left;
+        p.y -= bounds.top;
+    }
+
+    HBRUSH brush = CreateSolidBrush(color);
+    HPEN pen = CreatePen(PS_NULL, 0, 0);
+    HBRUSH oldBrush = (HBRUSH)SelectObject(memDC, brush);
+    HPEN oldPen = (HPEN)SelectObject(memDC, pen);
+    Polygon(memDC, offsetPts.data(), (int)offsetPts.size());
+    SelectObject(memDC, oldPen);
+    SelectObject(memDC, oldBrush);
+    DeleteObject(brush);
+    DeleteObject(pen);
+
+    // 6. ?붾㈃??AlphaBlend濡??⑹꽦
+    BLENDFUNCTION bf;
+    bf.BlendOp = AC_SRC_OVER;
+    bf.BlendFlags = 0;
+    bf.SourceConstantAlpha = alpha;
+    bf.AlphaFormat = 0;
+
+    AlphaBlend(hdc, bounds.left, bounds.top, w, h,
+               memDC, 0, 0, w, h, bf);
+
+    // ?뺣━
+    SelectObject(memDC, oldBmp);
+    DeleteObject(hBmp);
+    DeleteDC(memDC);
+}
+void HyeokStreamEditor::drawSidechainControls(HDC hdc) {
+    using namespace Layout;
+    HyeokStreamMaster* plugin = getPlugin();
+    if (!plugin) return;
+
+    // SC button (Spectrum top-left) - place in left sidebar area
+    int btnX = SCButtonX;
+    int btnY = SCButtonY;
+    int btnW = SCButtonW;
+    int btnH = SCButtonH;
+
+    bool isActive = plugin->getParameterValue(kParamSidechainActive) > 0.5f;
+    drawMSDButton(hdc, btnX, btnY, btnW, btnH, "SC", isActive, ELC_GOLD_PRIMARY);
+
+    // Draw HPF magnitude curve (1-pole HPF) across the spectrum
+    float scNorm = plugin->getParameterValue(kParamSidechainFreq);
+    float scCutoff = 20.0f * powf(20000.0f / 20.0f, scNorm); // 20..20000 Hz
+
+    const int graphX = SpectrumX + 35;
+    const int graphW = SpectrumW - 45;
+    const int graphY = SpectrumY + 10;
+    const int graphH = SpectrumH - 25;
+
+    // dB mapping matches analyzer: top slightly lowered to avoid hugging top
+    const float dbTop = 3.0f;
+    const float dbBottom = -90.0f;
+
+    auto freqToX = [&](float freq)->int {
+        float lp = (log10f(freq) - log10f(20.0f)) / (log10f(20000.0f) - log10f(20.0f));
+        if (lp < 0.0f) lp = 0.0f; if (lp > 1.0f) lp = 1.0f;
+        return graphX + (int)(lp * graphW);
+    };
+
+    auto dbToY = [&](float db)->int {
+        float t = (dbTop - db) / (dbTop - dbBottom); // 0..1
+        if (t < 0.0f) t = 0.0f; if (t > 1.0f) t = 1.0f;
+        return graphY + (int)(t * graphH);
+    };
+
+    auto getHpfMagnitude = [&](float freq, float cutoff)->float {
+        // 1-pole HPF magnitude approx: mag = f / sqrt(f^2 + fc^2)
+        float f = freq;
+        float c = cutoff;
+        return (f / sqrtf(f * f + c * c));
+    };
+
+    // Build curve points (log spaced) and polygon for fill
+    const int samples = 180;
+    std::vector<POINT> pts;
+    pts.reserve(samples + 2);
+    for (int i = 0; i < samples; ++i) {
+        float t = (float)i / (float)(samples - 1);
+        float freq = 20.0f * powf(20000.0f / 20.0f, t);
+        float mag = getHpfMagnitude(freq, scCutoff);
+        float db = 20.0f * log10f(mag + 1.0e-12f);
+        int x = freqToX(freq);
+        int y = dbToY(db);
+        pts.push_back({ x, y });
+    }
+
+    // Create polygon for fill: curve -> bottom right -> bottom left
+    std::vector<POINT> poly;
+    poly.reserve(pts.size() + 2);
+    for (const auto &p : pts) poly.push_back(p);
+    // bottom right
+    poly.push_back({ graphX + graphW, graphY + graphH });
+    // bottom left
+    poly.push_back({ graphX, graphY + graphH });
+
+    // Color logic: Gold when active, gray when off
+    COLORREF mainColor = isActive ? ELC_GOLD_PRIMARY : RGB(100, 100, 100);
+    COLORREF polyFill = isActive ? ELC_GOLD_PRIMARY : RGB(50, 50, 50);
+    BYTE alpha = isActive ? 60 : 30; // fairly transparent
+
+    // Fill under curve using alpha blend so grid remains visible
+    FillAlphaPoly(hdc, poly, polyFill, alpha);
+
+    // Draw the curve line (thinner for a refined look)
+    HPEN curvePen = CreatePen(PS_SOLID, 1, mainColor);
+    HPEN oldCurvePen = (HPEN)SelectObject(hdc, curvePen);
+    Polyline(hdc, pts.data(), (int)pts.size());
+    SelectObject(hdc, oldCurvePen);
+    DeleteObject(curvePen);
+
+    // Draw circular handle ON the curve at cutoff frequency (handle ~ -3 dB point)
+    int handleX = freqToX(scCutoff);
+    float handleMag = getHpfMagnitude(scCutoff, scCutoff);
+    float handleDb = 20.0f * log10f(handleMag + 1.0e-12f);
+    int handleY = dbToY(handleDb);
+    int handleR = 6;
+    HBRUSH handleBrush = CreateSolidBrush(mainColor);
+    HBRUSH oldHandleBrush = (HBRUSH)SelectObject(hdc, handleBrush);
+    HPEN handlePen = CreatePen(PS_SOLID, 1, RGB(20, 20, 20));
+    HPEN oldHandlePen = (HPEN)SelectObject(hdc, handlePen);
+    Ellipse(hdc, handleX - handleR, handleY - handleR, handleX + handleR, handleY + handleR);
+    SelectObject(hdc, oldHandlePen);
+    SelectObject(hdc, oldHandleBrush);
+    DeleteObject(handleBrush);
+    DeleteObject(handlePen);
+
+    // Draw SC label near handle if active
+    if (isActive) {
+        char freqText[32];
+        sprintf(freqText, "%.0f Hz", scCutoff);
+        SetTextColor(hdc, mainColor);
+        SelectObject(hdc, smallFont);
+        RECT textRect = { handleX + 8, handleY - 10, handleX + 120, handleY + 12 };
+        DrawTextA(hdc, freqText, -1, &textRect, DT_LEFT | DT_SINGLELINE);
+    }
+
+    // Draw control for sidechain HPF (if control exists)
+    if (14 < kNumControls) {
+        float scNorm = plugin->getParameterValue(kParamSidechainFreq);
+        // override control color depending on active state for visual feedback
+        Control temp = controls[14];
+        temp.color = isActive ? ELC_GOLD_PRIMARY : RGB(120, 120, 120);
+        // Draw using generic control drawer (will draw fader for CTRL_FADER)
+        drawControl(hdc, temp, scNorm);
+
+        // Draw numeric frequency value adjacent to the fader (live update)
+        float scFreqDisplay = 20.0f * powf(20000.0f / 20.0f, scNorm);
+        char freqText[32];
+        sprintf(freqText, "%.0f Hz", scFreqDisplay);
+        SetBkMode(hdc, TRANSPARENT);
+        SetTextColor(hdc, isActive ? ELC_GOLD_PRIMARY : RGB(140,140,140));
+        SelectObject(hdc, smallFont);
+        // Place frequency text below the slider to avoid clipping
+        RECT fRect = { temp.x, temp.y + temp.height + 5, temp.x + temp.width + 140, temp.y + temp.height + 25 };
+        DrawTextA(hdc, freqText, -1, &fRect, DT_LEFT | DT_SINGLELINE);
+    }
+}
+
+//-------------------------------------------------------------------------------------------------------
 // Catmull-Rom spline
 //-------------------------------------------------------------------------------------------------------
 float HyeokStreamEditor::catmullRom(float p0, float p1, float p2, float p3, float t) {
@@ -701,6 +950,7 @@ float HyeokStreamEditor::catmullRom(float p0, float p1, float p2, float p3, floa
 //-------------------------------------------------------------------------------------------------------
 // Spectrum curves with Catmull-Rom smoothing
 //-------------------------------------------------------------------------------------------------------
+// [REPLACEMENT] Pro-Q Style Transparent Spectrum Rendering
 void HyeokStreamEditor::drawSpectrumCurves(HDC hdc, const float* specIn, const float* specOut, int numBins) {
     if (!specIn || !specOut || numBins < 4) return;
     
@@ -711,18 +961,21 @@ void HyeokStreamEditor::drawSpectrumCurves(HDC hdc, const float* specIn, const f
     const int width = SpectrumW - 45;
     const int height = SpectrumH - 25;
     
-    const int interpFactor = 4;
+    const int interpFactor = 4; // Smoothness factor
     const int outPoints = (numBins - 1) * interpFactor + 1;
     
-    POINT* ptsIn = (POINT*)_alloca(sizeof(POINT) * outPoints);
-    POINT* ptsOut = (POINT*)_alloca(sizeof(POINT) * outPoints);
+    // Allocate points
+    std::vector<POINT> ptsIn(outPoints);
+    std::vector<POINT> ptsOut(outPoints);
     
+    // Helper lambda for dB mapping
     auto clampDb = [](float db) -> float {
         if (db < -60.0f) db = -60.0f;
-        if (db > 0.0f) db = 0.0f;
-        return (db + 60.0f) / 60.0f;
+        if (db > 6.0f) db = 6.0f;
+        return (db + 60.0f) / 66.0f; // Normalized 0..1
     };
     
+    // 1. Calculate Curve Points (Catmull-Rom Smoothing)
     for (int i = 0; i < numBins - 1; ++i) {
         int i0 = (i > 0) ? i - 1 : 0;
         int i1 = i;
@@ -734,15 +987,11 @@ void HyeokStreamEditor::drawSpectrumCurves(HDC hdc, const float* specIn, const f
         float xPos2 = (float)i2 / (float)(numBins - 1);
         float xPos3 = (float)i3 / (float)(numBins - 1);
         
-        float yIn0 = clampDb(specIn[i0]);
-        float yIn1 = clampDb(specIn[i1]);
-        float yIn2 = clampDb(specIn[i2]);
-        float yIn3 = clampDb(specIn[i3]);
+        float yIn0 = clampDb(specIn[i0]); float yIn1 = clampDb(specIn[i1]);
+        float yIn2 = clampDb(specIn[i2]); float yIn3 = clampDb(specIn[i3]);
         
-        float yOut0 = clampDb(specOut[i0]);
-        float yOut1 = clampDb(specOut[i1]);
-        float yOut2 = clampDb(specOut[i2]);
-        float yOut3 = clampDb(specOut[i3]);
+        float yOut0 = clampDb(specOut[i0]); float yOut1 = clampDb(specOut[i1]);
+        float yOut2 = clampDb(specOut[i2]); float yOut3 = clampDb(specOut[i3]);
         
         for (int j = 0; j < interpFactor; ++j) {
             float t = (float)j / (float)interpFactor;
@@ -760,28 +1009,39 @@ void HyeokStreamEditor::drawSpectrumCurves(HDC hdc, const float* specIn, const f
         }
     }
     
-    float lastDbIn = specIn[numBins - 1];
-    float lastDbOut = specOut[numBins - 1];
-    lastDbIn = clampDb(lastDbIn) * 60.0f - 60.0f;
-    lastDbOut = clampDb(lastDbOut) * 60.0f - 60.0f;
-    
-    ptsIn[outPoints - 1].x = x0 + width;
-    ptsIn[outPoints - 1].y = y0 + (int)((1.0f - clampDb(specIn[numBins - 1])) * height);
-    ptsOut[outPoints - 1].x = x0 + width;
-    ptsOut[outPoints - 1].y = y0 + (int)((1.0f - clampDb(specOut[numBins - 1])) * height);
-    
-    fillSpectrumGradient(hdc, ptsOut, outPoints, y0 + height, ELC_SPEC_FILL_OUT, ELC_BG_SPECTRUM);
-    fillSpectrumGradient(hdc, ptsIn, outPoints, y0 + height, ELC_SPEC_FILL_IN, ELC_BG_SPECTRUM);
-    
-    HPEN inPen = CreatePen(PS_SOLID, 2, ELC_SPEC_INPUT);
+    // Handle last point
+    ptsIn.back().x = x0 + width;
+    ptsIn.back().y = y0 + (int)((1.0f - clampDb(specIn[numBins - 1])) * height);
+    ptsOut.back().x = x0 + width;
+    ptsOut.back().y = y0 + (int)((1.0f - clampDb(specOut[numBins - 1])) * height);
+
+    // 2. Construct Fill Polygons (Add bottom corners)
+    auto createFillPoly = [&](const std::vector<POINT>& curvePts) {
+        std::vector<POINT> poly = curvePts;
+        poly.push_back({ curvePts.back().x, y0 + height }); // Bottom Right
+        poly.push_back({ curvePts.front().x, y0 + height }); // Bottom Left
+        return poly;
+    };
+
+    std::vector<POINT> fillIn = createFillPoly(ptsIn);
+    std::vector<POINT> fillOut = createFillPoly(ptsOut);
+
+    // 3. Draw LAYERS (Painter's Algorithm)
+    // Order: Input Fill -> Output Fill -> Input Line -> Output Line
+    FillAlphaPoly(hdc, fillIn, ELC_SPEC_FILL_IN, 40);
+    FillAlphaPoly(hdc, fillOut, ELC_SPEC_FILL_OUT, 60);
+
+    // C. Input Line (Thin, Cyan)
+    HPEN inPen = CreatePen(PS_SOLID, 1, ELC_SPEC_INPUT);
     HPEN oldPen = (HPEN)SelectObject(hdc, inPen);
-    Polyline(hdc, ptsIn, outPoints);
+    Polyline(hdc, ptsIn.data(), (int)ptsIn.size());
     SelectObject(hdc, oldPen);
     DeleteObject(inPen);
     
+    // D. Output Line (Thicker, Gold)
     HPEN outPen = CreatePen(PS_SOLID, 2, ELC_SPEC_OUTPUT);
     oldPen = (HPEN)SelectObject(hdc, outPen);
-    Polyline(hdc, ptsOut, outPoints);
+    Polyline(hdc, ptsOut.data(), (int)ptsOut.size());
     SelectObject(hdc, oldPen);
     DeleteObject(outPen);
 }
@@ -979,6 +1239,32 @@ void HyeokStreamEditor::drawBandSection(HDC hdc) {
         SetTextColor(hdc, grDb > 0.1f ? bandColors[i] : ELC_TEXT_DIM);
         RECT grValRect = { grX - 8, grY + GRMeterH + 2, grX + GRMeterW + 8, grY + GRMeterH + FontMargin };
         DrawTextA(hdc, grText, -1, &grValRect, DT_CENTER | DT_SINGLELINE);
+
+        // Peak-hold for GR meter (per-band)
+        DWORD nowLocal = GetTickCount();
+        if (grDb > peakGR[i]) { peakGR[i] = grDb; peakGRTime[i] = nowLocal; }
+        else if (peakGRTime[i] != 0 && nowLocal - peakGRTime[i] > kPeakHoldMs) { peakGR[i] = -1000.0f; peakGRTime[i] = 0; }
+
+        if (peakGRTime[i] != 0 && peakGR[i] > -500.0f) {
+            float pk = peakGR[i];
+            if (pk < 0.0f) pk = 0.0f; if (pk > 24.0f) pk = 24.0f;
+            int peakFilled = (int)((pk / 24.0f) * GRMeterH);
+            int peakY = grY + 1 + peakFilled;
+            HPEN pPen = CreatePen(PS_SOLID, 2, ELC_METER_RED);
+            HPEN oldP = (HPEN)SelectObject(hdc, pPen);
+            MoveToEx(hdc, grX - 2, peakY, nullptr);
+            LineTo(hdc, grX + GRMeterW + 2, peakY);
+            SelectObject(hdc, oldP);
+            DeleteObject(pPen);
+
+            // Peak value (red) below the value area
+            char pkText[16];
+            sprintf(pkText, "PK %.1f", peakGR[i]);
+            SetTextColor(hdc, ELC_METER_RED);
+            SelectObject(hdc, smallFont);
+            RECT pkRect = { grX - 20, grY + GRMeterH + 18, grX + GRMeterW + 20, grY + GRMeterH + FontMargin };
+            DrawTextA(hdc, pkText, -1, &pkRect, DT_CENTER | DT_SINGLELINE);
+        }
     }
 }
 
@@ -1148,6 +1434,17 @@ void HyeokStreamEditor::drawBypassButtons(HDC hdc) {
         DrawTextA(hdc, bypassed ? "BYP" : "ON", -1, &btnRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
     }
     
+    // M/S Mode buttons (below bypass for each band)
+    for (int band = 0; band < 4; ++band) {
+        int bx = BandStartX + band * BandWidth;
+        int grCenterX = bx + GRMeterOffsetX + GRMeterW / 2;
+        int msY = BandSectionY + MSModeBtnOffsetY;
+        int msX = grCenterX - MSModeBtnW / 2;
+
+        bool msMode = (getPlugin()->getParameterValue(kParamBand1Mode + band) > 0.5f);
+        drawMSDButton(hdc, msX, msY, MSModeBtnW, MSModeBtnH, "M/S", msMode, ELC_GOLD_PRIMARY);
+    }
+    
     // Limiter bypass button - centered below limiter section
     // Position: below limiter faders, centered under all three faders
     int limBtnY = BandSectionY + LimBypassOffsetY;
@@ -1255,6 +1552,78 @@ int HyeokStreamEditor::hitTestMSDButton(int mx, int my) {
     }
     
     return -1;
+}
+
+//-------------------------------------------------------------------------------------------------------
+// Hit test for M/S Mode button (below bypass)
+// Returns band index (0-3) or -1
+//-------------------------------------------------------------------------------------------------------
+int HyeokStreamEditor::hitTestMSModeButton(int mx, int my) {
+    using namespace Layout;
+    for (int band = 0; band < 4; ++band) {
+        int bx = BandStartX + band * BandWidth;
+        int grCenterX = bx + GRMeterOffsetX + GRMeterW / 2;
+        int msY = BandSectionY + MSModeBtnOffsetY;
+        int msX = grCenterX - MSModeBtnW / 2;
+        if (mx >= msX && mx <= msX + MSModeBtnW && my >= msY && my <= msY + MSModeBtnH) {
+            return band;
+        }
+    }
+    return -1;
+}
+
+//-------------------------------------------------------------------------------------------------------
+// Hit test for Sidechain controls (button + handle)
+// Returns 1 for button, 2 for handle, 0 for none
+//-------------------------------------------------------------------------------------------------------
+int HyeokStreamEditor::hitTestSidechainControl(int mx, int my) {
+    using namespace Layout;
+    // SC button area (matches drawSidechainControls)
+    int btnX = SCButtonX;
+    int btnY = SCButtonY;
+    int btnW = SCButtonW;
+    int btnH = SCButtonH;
+    if (mx >= btnX && mx <= btnX + btnW && my >= btnY && my <= btnY + btnH) return 1;
+
+    // Handle area
+    HyeokStreamMaster* plugin = getPlugin();
+    if (!plugin) return 0;
+    float scNorm = plugin->getParameterValue(kParamSidechainFreq);
+    float scFreq = 20.0f * powf(20000.0f / 20.0f, scNorm);
+    const int graphX = SpectrumX + 35;
+    const int graphW = SpectrumW - 45;
+    const int graphY = SpectrumY + 10;
+    const int graphH = SpectrumH - 25;
+
+    auto freqToX = [&](float freq)->int {
+        float lp = (log10f(freq) - log10f(20.0f)) / (log10f(20000.0f) - log10f(20.0f));
+        if (lp < 0.0f) lp = 0.0f; if (lp > 1.0f) lp = 1.0f;
+        return graphX + (int)(lp * graphW);
+    };
+
+    auto getHpfMagnitude = [&](float freq, float cutoff)->float {
+        float f = freq;
+        float c = cutoff;
+        return (f / sqrtf(f * f + c * c));
+    };
+
+    int handleX = freqToX(scFreq);
+    float handleMag = getHpfMagnitude(scFreq, scFreq);
+    float handleDb = 20.0f * log10f(handleMag + 1.0e-12f);
+    const float dbTop = 6.0f;
+    const float dbBottom = -90.0f;
+    float t = (dbTop - handleDb) / (dbTop - dbBottom);
+    if (t < 0.0f) t = 0.0f; if (t > 1.0f) t = 1.0f;
+    int handleY = graphY + (int)(t * graphH);
+
+    const int handleR = 8;
+    if (mx >= handleX - handleR && mx <= handleX + handleR && my >= handleY - handleR && my <= handleY + handleR) return 2;
+
+    // Knob hit test (control 14)
+    if (14 < kNumControls) {
+        if (controls[14].hitTest(mx, my)) return 3;
+    }
+    return 0;
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -1421,6 +1790,37 @@ void HyeokStreamEditor::drawLimiterSection(HDC hdc) {
     LineTo(hdc, LimiterX + LimiterW - 15, BandSectionY + 30);
     SelectObject(hdc, oldPen);
     DeleteObject(accentPen);
+
+    // Draw a small GR meter for limiter with peak marker support
+    HyeokStreamMaster* plugin = getPlugin();
+    if (plugin) {
+        int limMeterX = LimiterX + 18;
+        int limMeterY = BandSectionY + GRMeterOffsetY;
+        float lgr = plugin->getLimiterGrDb();
+        drawVerticalMeter(hdc, limMeterX, limMeterY, GRMeterW, GRMeterH, lgr, ELC_LIMITER, "GR", true);
+
+        // Update limiter GR peak
+        DWORD nowLocal = GetTickCount();
+        if (lgr > peakLimiterGR) { peakLimiterGR = lgr; peakLimiterGRTime = nowLocal; }
+        else if (peakLimiterGRTime != 0 && nowLocal - peakLimiterGRTime > kPeakHoldMs) { peakLimiterGR = -1000.0f; peakLimiterGRTime = 0; }
+
+        if (peakLimiterGRTime != 0 && peakLimiterGR > -500.0f) {
+            int pkFilled = (int)((peakLimiterGR / 24.0f) * GRMeterH);
+            int pkY = limMeterY + 1 + pkFilled;
+            HPEN pPen = CreatePen(PS_SOLID, 2, ELC_METER_RED);
+            HPEN oldP = (HPEN)SelectObject(hdc, pPen);
+            MoveToEx(hdc, limMeterX - 2, pkY, nullptr);
+            LineTo(hdc, limMeterX + GRMeterW + 2, pkY);
+            SelectObject(hdc, oldP);
+            DeleteObject(pPen);
+
+            char pkText[32]; sprintf(pkText, "PK %.1f", peakLimiterGR);
+            SetTextColor(hdc, ELC_METER_RED);
+            SelectObject(hdc, smallFont);
+            RECT pkRect = { limMeterX - 6, limMeterY + GRMeterH + 12, limMeterX + GRMeterW + 6, limMeterY + GRMeterH + FontMargin };
+            DrawTextA(hdc, pkText, -1, &pkRect, DT_CENTER | DT_SINGLELINE);
+        }
+    }
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -1490,11 +1890,51 @@ void HyeokStreamEditor::drawMeterSection(HDC hdc) {
     sprintf(outText, "%.1f", plugin->getOutputDb());
     
     int valY = meterY + IOMeterH + FontMargin;
+    // Lower the value text a bit to avoid overlapping the meter graphics
+    valY += 6;
     RECT inValRect = { inX - 5, valY, inX + IOMeterW + 5, valY + 14 };
     RECT outValRect = { outX - 5, valY, outX + IOMeterW + 5, valY + 14 };
     
     DrawTextA(hdc, inText, -1, &inValRect, DT_CENTER | DT_SINGLELINE);
     DrawTextA(hdc, outText, -1, &outValRect, DT_CENTER | DT_SINGLELINE);
+
+    // Update and draw peak-hold markers for IN/OUT
+    DWORD now = GetTickCount();
+    float inDb = plugin->getInputDb();
+    float outDb = plugin->getOutputDb();
+    // IN
+    if (inDb > peakIO[0]) { peakIO[0] = inDb; peakIOTime[0] = now; }
+    else if (peakIOTime[0] != 0 && now - peakIOTime[0] > kPeakHoldMs) { peakIO[0] = -1000.0f; peakIOTime[0] = 0; }
+    // OUT
+    if (outDb > peakIO[1]) { peakIO[1] = outDb; peakIOTime[1] = now; }
+    else if (peakIOTime[1] != 0 && now - peakIOTime[1] > kPeakHoldMs) { peakIO[1] = -1000.0f; peakIOTime[1] = 0; }
+
+    // Draw peak markers (small red horizontal line on meter) and value text
+    auto drawPeakOnMeter = [&](int meterX, float peakVal) {
+        if (peakVal < -500.0f) return;
+        // Map db to y coordinate (same mapping as drawVerticalMeter)
+        float db = peakVal;
+        if (db < -60.0f) db = -60.0f; if (db > 0.0f) db = 0.0f;
+        float norm = (db + 60.0f) / 60.0f;
+        int py = meterY + IOMeterH - (int)(norm * IOMeterH);
+        HPEN pPen = CreatePen(PS_SOLID, 2, ELC_METER_RED);
+        HPEN old = (HPEN)SelectObject(hdc, pPen);
+        MoveToEx(hdc, meterX - 2, py, nullptr);
+        LineTo(hdc, meterX + IOMeterW + 2, py);
+        SelectObject(hdc, old);
+        DeleteObject(pPen);
+
+        // Peak value text to the right of panel
+        char ptxt[16];
+        sprintf(ptxt, "%.1f", peakVal);
+        SetTextColor(hdc, ELC_METER_RED);
+        SelectObject(hdc, smallFont);
+        RECT pValRect = { meterX + IOMeterW + 12, meterY + 2, meterX + IOMeterW + 80, meterY + 16 };
+        DrawTextA(hdc, ptxt, -1, &pValRect, DT_LEFT | DT_SINGLELINE);
+    };
+
+    drawPeakOnMeter(inX, peakIO[0]);
+    drawPeakOnMeter(outX, peakIO[1]);
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -1554,6 +1994,10 @@ void HyeokStreamEditor::drawVerticalMeter(HDC hdc, int x, int y, int w, int h, f
 void HyeokStreamEditor::drawControl(HDC hdc, const Control& ctrl, float value) {
     if (ctrl.type == CTRL_KNOB) {
         drawKnob(hdc, ctrl, value);
+    } else if (ctrl.type == CTRL_FADER) {
+        drawFader(hdc, ctrl, value);
+    } else if (ctrl.type == CTRL_SLIDER) {
+        drawSlider(hdc, ctrl, value);
     } else {
         drawFader(hdc, ctrl, value);
     }
@@ -1729,6 +2173,76 @@ void HyeokStreamEditor::drawFader(HDC hdc, const Control& ctrl, float value) {
 }
 
 //-------------------------------------------------------------------------------------------------------
+// Horizontal slider (Waves C6 style compact)
+//-------------------------------------------------------------------------------------------------------
+void HyeokStreamEditor::drawSlider(HDC hdc, const Control& ctrl, float value) {
+    // Groove
+    int gx = ctrl.x;
+    int gy = ctrl.y + ctrl.height / 2 - 3;
+    int gw = ctrl.width;
+    int gh = 6;
+
+    RECT groove = { gx, gy, gx + gw, gy + gh };
+    HBRUSH grooveBrush = CreateSolidBrush(RGB(18, 18, 22));
+    FillRect(hdc, &groove, grooveBrush);
+    DeleteObject(grooveBrush);
+
+    // Active fill up to value
+    int fillW = gx + (int)(value * (float)gw);
+    if (fillW > gx) {
+        RECT fillRect = { gx, gy, fillW, gy + gh };
+        HBRUSH fillBrush = CreateSolidBrush(ctrl.color);
+        FillRect(hdc, &fillRect, fillBrush);
+        DeleteObject(fillBrush);
+    }
+
+    // Thumb (rectangular)
+    int thumbW = 12;
+    int thumbH = ctrl.height + 2;
+    int thumbCX = gx + (int)(value * (float)gw);
+    int thumbL = thumbCX - thumbW/2;
+    int thumbT = ctrl.y - (thumbH - ctrl.height)/2;
+
+    // Shadow
+    RECT sh = { thumbL + 2, thumbT + 2, thumbL + thumbW + 2, thumbT + thumbH + 2 };
+    HBRUSH shBrush = CreateSolidBrush(RGB(8,8,10));
+    FillRect(hdc, &sh, shBrush);
+    DeleteObject(shBrush);
+
+    RECT thumbRect = { thumbL, thumbT, thumbL + thumbW, thumbT + thumbH };
+    HBRUSH thumbBrushTop = CreateSolidBrush(ctrl.color);
+    HBRUSH thumbBrushBottom = CreateSolidBrush(RGB(
+        ELCMAX(0, GetRValue(ctrl.color)-40),
+        ELCMAX(0, GetGValue(ctrl.color)-40),
+        ELCMAX(0, GetBValue(ctrl.color)-40)));
+
+    // top half
+    RECT topHalf = { thumbRect.left, thumbRect.top, thumbRect.right, thumbRect.top + thumbH/2 };
+    FillRect(hdc, &topHalf, thumbBrushTop);
+    RECT bottomHalf = { thumbRect.left, thumbRect.top + thumbH/2, thumbRect.right, thumbRect.bottom };
+    FillRect(hdc, &bottomHalf, thumbBrushBottom);
+
+    // Border
+    HPEN border = CreatePen(PS_SOLID, 1, RGB(20,20,25));
+    HPEN oldPen = (HPEN)SelectObject(hdc, border);
+    HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, GetStockObject(NULL_BRUSH));
+    Rectangle(hdc, thumbRect.left, thumbRect.top, thumbRect.right, thumbRect.bottom);
+    SelectObject(hdc, oldBrush);
+    SelectObject(hdc, oldPen);
+    DeleteObject(border);
+
+    DeleteObject(thumbBrushTop);
+    DeleteObject(thumbBrushBottom);
+
+    // Label
+    SetBkMode(hdc, TRANSPARENT);
+    SetTextColor(hdc, ELC_TEXT_NORMAL);
+    SelectObject(hdc, labelFont);
+    RECT labelRect = { ctrl.x - 6, ctrl.y + ctrl.height + 6, ctrl.x + ctrl.width + 6, ctrl.y + ctrl.height + 20 };
+    DrawTextA(hdc, ctrl.label, -1, &labelRect, DT_CENTER | DT_SINGLELINE);
+}
+
+//-------------------------------------------------------------------------------------------------------
 // Control value
 //-------------------------------------------------------------------------------------------------------
 void HyeokStreamEditor::drawControlValue(HDC hdc, const Control& ctrl, float value) {
@@ -1758,6 +2272,10 @@ void HyeokStreamEditor::drawControlValue(HDC hdc, const Control& ctrl, float val
     SelectObject(hdc, valueFont);
     
     int valueY = (ctrl.type == CTRL_KNOB) ? ctrl.y - 18 : ctrl.y - 20;
+    // Push limiter values slightly lower to avoid overlapping other labels
+    if (ctrl.paramIndex == kParamLimiterThresh || ctrl.paramIndex == kParamLimiterCeiling || ctrl.paramIndex == kParamLimiterRelease) {
+        valueY += 10;
+    }
     RECT valueRect = { ctrl.x - 15, valueY, ctrl.x + ctrl.width + 15, valueY + 16 };
     DrawTextA(hdc, text, -1, &valueRect, DT_CENTER | DT_SINGLELINE);
 }
@@ -1775,6 +2293,25 @@ void HyeokStreamEditor::drawLufs(HDC hdc, float lufs) {
     
     RECT lufsRect = { kEditorWidth - 200, 12, kEditorWidth - 20, 38 };
     DrawTextA(hdc, text, -1, &lufsRect, DT_RIGHT | DT_SINGLELINE);
+
+    // Peak-hold for LUFS (red value to the left of the LUFS text)
+    DWORD now = GetTickCount();
+    if (lufs > peakLUFS) {
+        peakLUFS = lufs;
+        peakLUFSTime = now;
+    } else if (peakLUFSTime != 0 && now - peakLUFSTime > kPeakHoldMs) {
+        peakLUFS = -1000.0f;
+        peakLUFSTime = 0;
+    }
+
+    if (peakLUFSTime != 0 && peakLUFS > -500.0f) {
+        char ptext[32];
+        sprintf(ptext, "PK %.1f", peakLUFS);
+        SetTextColor(hdc, ELC_METER_RED);
+        SelectObject(hdc, smallFont);
+        RECT pRect = { kEditorWidth - 320, 12, kEditorWidth - 210, 38 };
+        DrawTextA(hdc, ptext, -1, &pRect, DT_RIGHT | DT_SINGLELINE);
+    }
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -1786,6 +2323,53 @@ void HyeokStreamEditor::onMouseDown(int x, int y, bool shiftHeld) {
     activeControl = -1;
     activeCrossover = -1;
     fineMode = shiftHeld;
+
+    // Quick click-to-reset for peaks: IN/OUT meters, LUFS, per-band GR, limiter GR
+    HyeokStreamMaster* plugin = getPlugin();
+    if (plugin) {
+        using namespace Layout;
+        // LUFS rect (top-right)
+        RECT lufsRect = { kEditorWidth - 200, 12, kEditorWidth - 20, 38 };
+        if (x >= lufsRect.left && x <= lufsRect.right && y >= lufsRect.top && y <= lufsRect.bottom) {
+            peakLUFS = -1000.0f; peakLUFSTime = 0;
+            InvalidateRect(hwnd, nullptr, FALSE);
+            return;
+        }
+
+        // IN/OUT meters
+        int panelX = IOSectionX - 5;
+        int panelY = BandSectionY;
+        int inX = IOSectionX;
+        int meterY = panelY + 32;
+        int outX = inX + IOMeterW + IOMeterGap;
+        RECT inRect = { inX, meterY, inX + IOMeterW, meterY + IOMeterH };
+        RECT outRect = { outX, meterY, outX + IOMeterW, meterY + IOMeterH };
+        if (x >= inRect.left && x <= inRect.right && y >= inRect.top && y <= inRect.bottom) {
+            peakIO[0] = -1000.0f; peakIOTime[0] = 0; InvalidateRect(hwnd, nullptr, FALSE); return;
+        }
+        if (x >= outRect.left && x <= outRect.right && y >= outRect.top && y <= outRect.bottom) {
+            peakIO[1] = -1000.0f; peakIOTime[1] = 0; InvalidateRect(hwnd, nullptr, FALSE); return;
+        }
+
+        // Per-band GR meters
+        for (int i = 0; i < 4; ++i) {
+            int bx = BandStartX + i * BandWidth;
+            int grX = bx + GRMeterOffsetX;
+            int grY = BandSectionY + GRMeterOffsetY;
+            RECT grRect = { grX, grY, grX + GRMeterW, grY + GRMeterH };
+            if (x >= grRect.left && x <= grRect.right && y >= grRect.top && y <= grRect.bottom) {
+                peakGR[i] = -1000.0f; peakGRTime[i] = 0; InvalidateRect(hwnd, nullptr, FALSE); return;
+            }
+        }
+
+        // Limiter GR meter reset
+        int limMeterX = LimiterX + 18;
+        int limMeterY = BandSectionY + GRMeterOffsetY;
+        RECT limRect = { limMeterX, limMeterY, limMeterX + GRMeterW, limMeterY + GRMeterH };
+        if (x >= limRect.left && x <= limRect.right && y >= limRect.top && y <= limRect.bottom) {
+            peakLimiterGR = -1000.0f; peakLimiterGRTime = 0; InvalidateRect(hwnd, nullptr, FALSE); return;
+        }
+    }
     
     // First check bypass buttons
     int bypassHit = hitTestBypassButton(x, y);
@@ -1804,7 +2388,53 @@ void HyeokStreamEditor::onMouseDown(int x, int y, bool shiftHeld) {
         return;
     }
     
-    // Then check M/S/Δ buttons
+    // Then check M/S/? buttons
+    // Check M/S Mode buttons (below bypass)
+    int msModeHit = hitTestMSModeButton(x, y);
+    if (msModeHit >= 0) {
+        HyeokStreamMaster* plugin = getPlugin();
+        if (plugin) {
+            int paramIndex = kParamBand1Mode + msModeHit;
+            float val = plugin->getParameterValue(paramIndex);
+            plugin->setParameterAutomated(paramIndex, val > 0.5f ? 0.0f : 1.0f);
+            InvalidateRect(hwnd, nullptr, FALSE);
+        }
+        return;
+    }
+
+    // Sidechain button / handle hit
+    int scHit = hitTestSidechainControl(x, y);
+    if (scHit == 1) {
+        HyeokStreamMaster* plugin = getPlugin();
+        if (plugin) {
+            float val = plugin->getParameterValue(kParamSidechainActive);
+            plugin->setParameterAutomated(kParamSidechainActive, val > 0.5f ? 0.0f : 1.0f);
+            InvalidateRect(hwnd, nullptr, FALSE);
+        }
+        return;
+    } else if (scHit == 2) {
+        // Start dragging sidechain handle
+        activeSidechainDrag = true;
+        scDragStartX = x;
+        HyeokStreamMaster* plugin = getPlugin();
+        if (plugin) {
+            scDragStartValue = plugin->getParameterValue(kParamSidechainFreq);
+            plugin->beginEdit(kParamSidechainFreq);
+        }
+        return;
+    } else if (scHit == 3) {
+        // Clicked the slider area - allow interaction even when SC is off
+        HyeokStreamMaster* plugin = getPlugin();
+        if (plugin) {
+            activeControl = 14;
+            dragStartValue = plugin->getParameterValue(kParamSidechainFreq);
+            dragStartX = x;
+            plugin->beginEdit(kParamSidechainFreq);
+            InvalidateRect(hwnd, nullptr, FALSE);
+        }
+        return;
+    }
+
     int btnHit = hitTestMSDButton(x, y);
     if (btnHit >= 0) {
         HyeokStreamMaster* plugin = getPlugin();
@@ -1863,21 +2493,30 @@ void HyeokStreamEditor::onMouseDown(int x, int y, bool shiftHeld) {
         if (i >= 8 && i <= 10) continue;
         
         if (controls[i].hitTest(x, y)) {
+            // allow interaction for sidechain control even if SC is bypassed
+
             activeControl = i;
-            
+
             HyeokStreamMaster* plugin = getPlugin();
             if (plugin) {
                 dragStartValue = plugin->getParameterValue(controls[i].paramIndex);
                 dragStartY = y;
-                
+
                 plugin->beginEdit(controls[i].paramIndex);
-                
+
                 if (controls[i].type == CTRL_FADER) {
                     float newValue = controls[i].valueFromY(y);
                     plugin->setParameterAutomated(controls[i].paramIndex, newValue);
+                } else if (controls[i].type == CTRL_SLIDER) {
+                    float nx = (float)(x - controls[i].x) / (float)controls[i].width;
+                    if (nx < 0.0f) nx = 0.0f; if (nx > 1.0f) nx = 1.0f;
+                    plugin->setParameterAutomated(controls[i].paramIndex, nx);
+                    // store drag start for fine adjustments
+                    dragStartValue = nx;
+                    dragStartX = x;
                 }
             }
-            
+
             InvalidateRect(hwnd, nullptr, FALSE);
             break;
         }
@@ -1887,6 +2526,40 @@ void HyeokStreamEditor::onMouseDown(int x, int y, bool shiftHeld) {
 void HyeokStreamEditor::onMouseMove(int x, int y, bool shiftHeld) {
     using namespace Layout;
     
+    // Handle sidechain handle dragging
+    if (activeSidechainDrag) {
+        HyeokStreamMaster* plugin = getPlugin();
+        if (!plugin) return;
+
+        const int graphX = SpectrumX + 35;
+        const int graphW = SpectrumW - 45;
+
+        float logPos = (float)(x - graphX) / (float)graphW;
+        if (logPos < 0.0f) logPos = 0.0f;
+        if (logPos > 1.0f) logPos = 1.0f;
+
+        // Frequency at X (20..500 Hz for sidechain)
+        float freq = 20.0f * powf(20000.0f / 20.0f, logPos);
+        if (freq < 20.0f) freq = 20.0f;
+        if (freq > 20000.0f) freq = 20000.0f; // sidechain HPF limited to 20kHz
+
+        // Map to sidechain normalized range (0..1) using same mapping as drawSidechainControls
+        float newNorm = logf(freq / 20.0f) / logf(20000.0f / 20.0f);
+
+        // Apply fine mode
+        if (fineMode) {
+            float delta = newNorm - scDragStartValue;
+            newNorm = scDragStartValue + delta * 0.1f;
+        }
+
+        if (newNorm < 0.0f) newNorm = 0.0f;
+        if (newNorm > 1.0f) newNorm = 1.0f;
+
+        plugin->setParameterAutomated(kParamSidechainFreq, newNorm);
+        InvalidateRect(hwnd, nullptr, FALSE);
+        return;
+    }
+
     // Handle crossover drag
     if (activeCrossover >= 0) {
         HyeokStreamMaster* plugin = getPlugin();
@@ -1941,6 +2614,14 @@ void HyeokStreamEditor::onMouseMove(int x, int y, bool shiftHeld) {
         if (newValue > 1.0f) newValue = 1.0f;
         
         plugin->setParameterAutomated(ctrl.paramIndex, newValue);
+    } else if (ctrl.type == CTRL_SLIDER) {
+        float nx = (float)(x - ctrl.x) / (float)ctrl.width;
+        if (nx < 0.0f) nx = 0.0f; if (nx > 1.0f) nx = 1.0f;
+        if (fineMode) {
+            float delta = nx - dragStartValue;
+            nx = dragStartValue + delta * 0.1f;
+        }
+        plugin->setParameterAutomated(ctrl.paramIndex, nx);
     } else {
         float targetValue = ctrl.valueFromY(y);
         float currentValue = plugin->getParameterValue(ctrl.paramIndex);
@@ -1968,26 +2649,57 @@ void HyeokStreamEditor::onMouseUp() {
             plugin->endEdit(controls[activeControl].paramIndex);
         }
     }
+    if (activeSidechainDrag) {
+        HyeokStreamMaster* plugin = getPlugin();
+        if (plugin) {
+            plugin->endEdit(kParamSidechainFreq);
+        }
+        activeSidechainDrag = false;
+    }
     activeControl = -1;
     fineMode = false;
 }
 
 void HyeokStreamEditor::onMouseWheel(int delta, bool shiftHeld) {
-    if (activeControl < 0) return;
-    
     HyeokStreamMaster* plugin = getPlugin();
     if (!plugin) return;
-    
-    const Control& ctrl = controls[activeControl];
+
     float step = shiftHeld ? 0.001f : 0.01f;
-    float currentValue = plugin->getParameterValue(ctrl.paramIndex);
-    float newValue = currentValue + (delta > 0 ? step : -step);
-    
-    if (newValue < 0.0f) newValue = 0.0f;
-    if (newValue > 1.0f) newValue = 1.0f;
-    
-    plugin->setParameterAutomated(ctrl.paramIndex, newValue);
-    InvalidateRect(hwnd, nullptr, FALSE);
+
+    // If a control is actively being dragged, adjust that control
+    if (activeControl >= 0) {
+        const Control& ctrl = controls[activeControl];
+        float currentValue = plugin->getParameterValue(ctrl.paramIndex);
+        float newValue = currentValue + (delta > 0 ? step : -step);
+        if (newValue < 0.0f) newValue = 0.0f;
+        if (newValue > 1.0f) newValue = 1.0f;
+        plugin->setParameterAutomated(ctrl.paramIndex, newValue);
+        InvalidateRect(hwnd, nullptr, FALSE);
+        return;
+    }
+
+    // If no active control, support wheel-on-hover for the sidechain slider
+    POINT pt;
+    GetCursorPos(&pt);
+    ScreenToClient(hwnd, &pt);
+
+    // If no active control, allow wheel-on-hover for any control under cursor
+    for (int i = 0; i < kNumControls; ++i) {
+        if (!controls[i].hitTest(pt.x, pt.y)) continue;
+
+        // Adjust this control (allow adjusting SC even when SC is off)
+        plugin->beginEdit(controls[i].paramIndex);
+        float cur = plugin->getParameterValue(controls[i].paramIndex);
+        float nv = cur + (delta > 0 ? step : -step);
+        if (nv < 0.0f) nv = 0.0f;
+        if (nv > 1.0f) nv = 1.0f;
+        plugin->setParameterAutomated(controls[i].paramIndex, nv);
+        plugin->endEdit(controls[i].paramIndex);
+        InvalidateRect(hwnd, nullptr, FALSE);
+        return;
+    }
+
+    // Otherwise ignore wheel
 }
 
 //-------------------------------------------------------------------------------------------------------

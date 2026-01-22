@@ -1,4 +1,0 @@
-C:/Projects/ELBIXPLUGIN/build32/CMakeFiles/ELC4L.dir
-C:/Projects/ELBIXPLUGIN/build32/CMakeFiles/INSTALL.dir
-C:/Projects/ELBIXPLUGIN/build32/CMakeFiles/ALL_BUILD.dir
-C:/Projects/ELBIXPLUGIN/build32/CMakeFiles/ZERO_CHECK.dir
